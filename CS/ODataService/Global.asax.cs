@@ -22,8 +22,12 @@ namespace WebApplication1
         }
 
         public class CustomBodyModelValidator : DefaultBodyModelValidator {
+            readonly HashSet<Type> persistentTypes;
+            public CustomBodyModelValidator() {
+                persistentTypes = new HashSet<Type>(ConnectionHelper.GetPersistentTypes());
+            }
             public override bool ShouldValidateType(Type type) {
-                return !ConnectionHelper.GetPersistentTypes().Contains(type);
+                return !persistentTypes.Contains(type);
             }
         }
     }
