@@ -10,7 +10,6 @@ namespace WebApplication1.Models {
     {
         public Customer(Session session) : base(session) { }
         public Customer() : base(XpoDefault.Session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
 
         string fCustomerID;
         [Key]

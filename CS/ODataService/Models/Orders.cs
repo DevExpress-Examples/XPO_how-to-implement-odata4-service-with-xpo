@@ -9,9 +9,7 @@ namespace WebApplication1.Models {
     public class Order : BaseDocument {
 
         public Order(Session session) : base(session) { }
-        public Order() {
-        }
-        public override void AfterConstruction() { base.AfterConstruction(); }        
+        public Order() { }
 
         OrderStatus fOrderStatus;
         public OrderStatus OrderStatus {

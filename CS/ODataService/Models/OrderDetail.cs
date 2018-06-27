@@ -9,7 +9,6 @@ namespace WebApplication1.Models {
     public class OrderDetail : XPLiteObject {
         public OrderDetail(Session session) : base(session) { }
         public OrderDetail() { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
 
         int fOrderDetailID;
         [Key(true)]

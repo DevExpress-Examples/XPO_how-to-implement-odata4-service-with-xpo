@@ -21,7 +21,7 @@ namespace WebApplication1.Controllers {
         [EnableQuery]
         public SingleResult<Product> Get([FromODataUri] int key) {
             Session = ConnectionHelper.CreateSession();
-            IQueryable<Product> result = Session.Query<Product>().AsWrappedQuery().Where(t => t.ProductID == key);
+            var result = Session.Query<Product>().AsWrappedQuery().Where(t => t.ProductID == key);
             return SingleResult.Create(result);
         }
 

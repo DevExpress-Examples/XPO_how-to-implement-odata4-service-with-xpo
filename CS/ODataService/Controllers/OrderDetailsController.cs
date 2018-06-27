@@ -21,7 +21,7 @@ namespace WebApplication1.Controllers {
         [EnableQuery]
         public SingleResult<OrderDetail> Get([FromODataUri] int key) {
             Session = ConnectionHelper.CreateSession();
-            IQueryable<OrderDetail> result = Session.Query<OrderDetail>().AsWrappedQuery().Where(t => t.OrderDetailID == key);
+            var result = Session.Query<OrderDetail>().AsWrappedQuery().Where(t => t.OrderDetailID == key);
             return SingleResult.Create(result);
         }
 

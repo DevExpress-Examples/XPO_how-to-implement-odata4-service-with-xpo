@@ -32,10 +32,11 @@ namespace ODataService.Helpers {
             var dictionary = new ReflectionDictionary();
             dictionary.NullableBehavior = NullableBehavior.ByUnderlyingType;
             dictionary.GetDataStoreSchema(persistentTypes);
-            var provider = XpoDefault.GetConnectionProvider(XpoDefault.GetConnectionPoolString(ConnectionString), autoCreationOption);
             if(threadSafe) {
+                var provider = XpoDefault.GetConnectionProvider(XpoDefault.GetConnectionPoolString(ConnectionString), autoCreationOption);
                 return new ThreadSafeDataLayer(dictionary, provider);
             } else {
+                var provider = XpoDefault.GetConnectionProvider(ConnectionString, autoCreationOption);
                 return new SimpleDataLayer(dictionary, provider);
             }
         }

@@ -9,9 +9,7 @@ namespace WebApplication1.Models {
     public class Contract : BaseDocument {
 
         public Contract(Session session) : base(session) { }
-        public Contract() {
-        }
-        public override void AfterConstruction() { base.AfterConstruction(); }
+        public Contract() { }
 
         string fNumber;
         public string Number {
