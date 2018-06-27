@@ -10,7 +10,6 @@ namespace WebApplication1.Models {
 
         public Product() { }
         public Product(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
 
         int fProductID;
         [Key(true)]
@@ -44,5 +43,4 @@ namespace WebApplication1.Models {
         [Association(@"ProductsReferencesOrderDetails")]
         public XPCollection<OrderDetail> OrderDetails { get { return GetCollection<OrderDetail>(nameof(OrderDetails)); } }
     }
-
 }

@@ -92,7 +92,7 @@ namespace Tests {
                 .Expand("OrderDetails($expand=Product)")
                 .ToList();
 
-            orders = orders.OrderBy(o => o.OrderDate).ToList();
+            orders = orders.OrderBy(o => o.Date).ToList();
             Assert.AreEqual(5, orders.Count);
             Assert.AreEqual("BSBEV", orders[0].Customer.CustomerID);
             Assert.AreEqual("OCEAN", orders[1].Customer.CustomerID);
@@ -116,7 +116,7 @@ namespace Tests {
                 .Expand("OrderDetails($expand=Product)")
                 .Where(o => o.Customer.CustomerID != "OCEAN")
                 .OrderBy(o => o.Customer.CompanyName)
-                .ThenBy(o => o.OrderDate)
+                .ThenBy(o => o.Date)
                 .ToList();
 
             Assert.AreEqual(3, orders.Count);
@@ -151,13 +151,13 @@ namespace Tests {
             DateTimeOffset endDate = new DateTimeOffset(new DateTime(2018, 06, 01));
             Container container = GetODataContainer();
             var orders = container.Orders
-                .Where(o => o.OrderDate > startDate && o.OrderDate <= endDate)
+                .Where(o => o.Date > startDate && o.Date <= endDate)
                 .ToList();
 
             Assert.AreEqual(2, orders.Count);
             for(int i = 0; i < orders.Count; i++) {
-                Assert.Greater(orders[i].OrderDate, startDate);
-                Assert.LessOrEqual(orders[i].OrderDate, endDate);
+                Assert.Greater(orders[i].Date, startDate);
+                Assert.LessOrEqual(orders[i].Date, endDate);
             }
         }
 
@@ -165,7 +165,7 @@ namespace Tests {
         public void FilterByDateTimePart() {
             Container container = GetODataContainer();
             var orders = container.Orders
-                .Where(o => o.OrderDate.Value.Year == 2018 && (o.OrderDate.Value.Month == 3 || o.OrderDate.Value.Month == 6))
+                .Where(o => o.Date.Value.Year == 2018 && (o.Date.Value.Month == 3 || o.Date.Value.Month == 6))
                 .ToList();
             Assert.AreEqual(3, orders.Count);
         }
@@ -185,20 +185,20 @@ namespace Tests {
         [Test]
         public void SelectWithProjection() {
             Container container = GetODataContainer();
-            var orders = container.Orders.Expand(t => t.Customer).OrderBy(t => t.OrderDate).ToList();
+            var orders = container.Orders.Expand(t => t.Customer).OrderBy(t => t.Date).ToList();
             var projected = container.Orders
-                .OrderBy(t => t.OrderDate)
+                .OrderBy(t => t.Date)
                 .Select(t => new {
-                    OrderID = t.OrderID,
-                    OrderDate = t.OrderDate,
+                    OrderID = t.ID,
+                    OrderDate = t.Date,
                     Customer = (t.Customer != null) ? t.Customer.CompanyName : null
                 })
                 .ToList();
 
             Assert.AreEqual(orders.Count, projected.Count);
             for(int i = 0; i < orders.Count; i++) {
-                Assert.AreEqual(orders[i].OrderID, projected[i].OrderID);
-                Assert.AreEqual(orders[i].OrderDate, projected[i].OrderDate);
+                Assert.AreEqual(orders[i].ID, projected[i].OrderID);
+                Assert.AreEqual(orders[i].Date, projected[i].OrderDate);
                 Assert.AreEqual(orders[i].Customer?.CompanyName, projected[i].Customer);
             }
         }
@@ -206,18 +206,18 @@ namespace Tests {
         [Test]
         public void SelectWithProjectionAndFunctions() {
             Container container = GetODataContainer();
-            var orders = container.Orders.Expand(t => t.Customer).OrderBy(t => t.OrderDate).ToList();
+            var orders = container.Orders.Expand(t => t.Customer).OrderBy(t => t.Date).ToList();
             var projected = container.Orders
-                .OrderBy(t => t.OrderDate)
+                .OrderBy(t => t.Date)
                 .Select(t => new {
-                    Year = t.OrderDate.Value.Year,
+                    Year = t.Date.Value.Year,
                     Customer = (t.Customer != null) ? t.Customer.CompanyName.ToUpper() : null
                 })
                 .ToList();
 
             Assert.AreEqual(orders.Count, projected.Count);
             for(int i = 0; i < orders.Count; i++) {
-                Assert.AreEqual(orders[i].OrderDate.Value.Year, projected[i].Year);
+                Assert.AreEqual(orders[i].Date.Value.Year, projected[i].Year);
                 Assert.AreEqual(orders[i].Customer?.CompanyName.ToUpper(), projected[i].Customer);
             }
         }
@@ -226,11 +226,66 @@ namespace Tests {
         public void ResourceReferenceProperty() {
             Container container = GetODataContainer();
             int orderId = container.Orders
-                .Where(t => t.OrderDate == new DateTimeOffset(new DateTime(2018, 06, 01)))
-                .First().OrderID;
+                .Where(t => t.Date == new DateTimeOffset(new DateTime(2018, 06, 01)))
+                .First().ID;
 
             var details = container.Orders.ByKey(orderId).OrderDetails.Expand(t => t.Product).ToList();
             Assert.AreEqual(3, details.Count);
+        }
+
+        [Test]
+        public void InheritanceFilterByType() {
+            Container container = GetODataContainer();
+            var documents = container.Documents.ToList();
+            var orders = container.Documents.Where(t => t is Order).ToList();
+            var contracts = container.Documents.Where(t => t is Contract).ToList();
+            var notOrders = container.Documents.Where(t => !(t is Order)).ToList();
+            Assert.AreEqual(5, orders.Count);
+            Assert.AreEqual(3, contracts.Count);
+            Assert.AreEqual(8, documents.Count);
+            Assert.AreEqual(contracts.Count, notOrders.Count);
+        }
+
+        [Test]
+        public void InheritanceCast() {
+            Container container = GetODataContainer();
+            var contracts = container.Documents.Where(t => (t as Contract).Number != "2018-0003").ToList();
+            Assert.AreEqual(2, contracts.Count);
+            contracts = container.Documents.Where(t => (t as Contract).Number == "2018-0003").ToList();
+            Assert.AreEqual(1, contracts.Count);
+        }
+
+        [Test]
+        public void SelectInheritedReference() {
+            Container container = GetODataContainer();
+            int orderId = container.Orders
+                .Where(t => t.Date == new DateTimeOffset(new DateTime(2018, 01, 22, 10, 00, 01)))
+                .First().ID;
+            BaseDocument parentDoc = container.Orders.ByKey(orderId).ParentDocument.GetValue();
+            Assert.IsNotNull(parentDoc);
+            Assert.AreEqual(typeof(Contract), parentDoc.GetType());
+            Assert.AreEqual("2018-0001", ((Contract)parentDoc).Number);
+        }
+
+        [Test]
+        public void ExpandInheritedCollection() {
+            Container container = GetODataContainer();
+            Contract contract = container.Contracts.Expand(c => c.LinkedDocuments)
+                .Where(t => t.Number == "2018-0001")
+                .First();
+            Assert.AreEqual(3, contract.LinkedDocuments.Count);
+            var linkedDocuments = contract.LinkedDocuments.OrderBy(t => t.GetType().Name).ToList();
+            Assert.AreEqual(typeof(Contract), linkedDocuments[0].GetType());
+            Assert.AreEqual(typeof(Order), linkedDocuments[1].GetType());
+            Assert.AreEqual(typeof(Order), linkedDocuments[2].GetType());
+        }
+
+        [Test]
+        public void CrossFilterByChildCollection() {
+            Container container = GetODataContainer();
+            var contracts = container.Contracts.Where(c => c.LinkedDocuments.Any(d => d.Date <= c.Date)).ToList();
+            Assert.AreEqual(1, contracts.Count);
+            Assert.AreEqual("2018-0001", contracts[0].Number);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace WebApplication1.Controllers {
         public IHttpActionResult TotalSalesByYear(int year) {
             using(UnitOfWork uow = new UnitOfWork()) {
                 decimal result = uow.Query<Order>()
-                    .Where(o => o.OrderDate.Value.Year == year)
+                    .Where(o => o.Date.Value.Year == year)
                     .Sum(o => o.OrderDetails.Sum(d => d.Quantity * d.UnitPrice));
                 return Ok(result);
             }

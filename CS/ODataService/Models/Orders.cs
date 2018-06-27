@@ -6,19 +6,10 @@ using System.Collections.Generic;
 namespace WebApplication1.Models {
 
     [Persistent("Orders")]
-    public class Order : XPLiteObject {
+    public class Order : BaseDocument {
 
         public Order(Session session) : base(session) { }
-        public Order() {
-        }
-        public override void AfterConstruction() { base.AfterConstruction(); }
-
-        int fOrderID;
-        [Key(true)]
-        public int OrderID {
-            get { return fOrderID; }
-            set { SetPropertyValue<int>(nameof(OrderID), ref fOrderID, value); }
-        }
+        public Order() { }
 
         OrderStatus fOrderStatus;
         public OrderStatus OrderStatus {
@@ -33,13 +24,6 @@ namespace WebApplication1.Models {
         public Customer Customer {
             get { return fCustomerID; }
             set { SetPropertyValue<Customer>(nameof(Customer), ref fCustomerID, value); }
-        }
-
-        DateTime? fOrderDate;
-        [Indexed(Name = @"OrderDate")]
-        public DateTime? OrderDate {
-            get { return fOrderDate; }
-            set { SetPropertyValue<DateTime?>(nameof(OrderDate), ref fOrderDate, value); }
         }
 
         [Association(@"OrdersReferencesOrderDetails")]
