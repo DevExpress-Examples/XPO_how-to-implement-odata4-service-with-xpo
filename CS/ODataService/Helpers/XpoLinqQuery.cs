@@ -202,28 +202,30 @@ namespace ODataService.Helpers {
             return Visit(expression);
         }
 
+        protected override Expression VisitUnary(UnaryExpression node) {
+            switch(node.NodeType) {
+                case ExpressionType.TypeAs:
+                    Expression expr = PatchTypeAsToConvert(node);
+                    if(expr != null) {
+                        return base.Visit(expr);
+                    }
+                    break;
+            }
+            return base.VisitUnary(node);
+        }        
+
         protected override Expression VisitBinary(BinaryExpression node) {
             switch(node.NodeType) {
                 case ExpressionType.Equal:
-                    if(node.Left.NodeType != ExpressionType.Conditional || node.Right.NodeType != ExpressionType.Constant
-                    || node.Right.Type != typeof(bool?) || (bool?)(node.Right as ConstantExpression).Value != true) {
-                        break;
+                    Expression expr = PatchConditionalWithBoolNullable(node);
+                    if(expr != null) {
+                        return base.Visit(expr);
                     }
-                    ConditionalExpression ifNode = (node.Left as ConditionalExpression);
-                    if(ifNode.Test.NodeType != ExpressionType.Equal) {
-                        break;
+                    expr = PatchTypeAsEqualNullToTypeIs(node);
+                    if(expr != null) {
+                        return base.Visit(expr);
                     }
-                    BinaryExpression ifTest = (ifNode.Test as BinaryExpression);
-                    if(ifTest.Right.NodeType != ExpressionType.Constant || (ifTest.Right as ConstantExpression).Value != null) {
-                        break;
-                    }
-                    if(ifNode.IfTrue.NodeType != ExpressionType.Constant || (ifNode.IfTrue as ConstantExpression).Value != null) {
-                        break;
-                    }
-                    if(ifNode.IfFalse.NodeType == ExpressionType.Convert && ifNode.IfFalse.Type == typeof(bool?)) {
-                        return base.Visit((ifNode.IfFalse as UnaryExpression).Operand);
-                    }
-                    return base.Visit(ifNode.IfFalse);
+                    break;
             }
             return base.VisitBinary(node);
         }
@@ -231,14 +233,77 @@ namespace ODataService.Helpers {
         protected override Expression VisitMethodCall(MethodCallExpression node) {
             switch(node.Method.Name) {
                 case "Compare":
-                    if(node.Method.DeclaringType == typeof(string) && node.Arguments.Count == 3) {
-                        MethodInfo method = typeof(string).GetMethod("Compare", new Type[] { typeof(string), typeof(string) });
-                        Expression newExpr = Expression.Call(method, node.Arguments[0], node.Arguments[1]);
-                        return base.Visit(newExpr);
+                    Expression expr = PatchCompareString(node);
+                    if(expr != null) {
+                        return base.Visit(expr);
                     }
                     break;
             }
             return base.VisitMethodCall(node);
+        }
+
+        Expression PatchCompareString(MethodCallExpression node) {
+            if(node.Method.DeclaringType == typeof(string) && node.Arguments.Count == 3) {
+                MethodInfo method = typeof(string).GetMethod("Compare", new Type[] { typeof(string), typeof(string) });
+                return Expression.Call(method, node.Arguments[0], node.Arguments[1]);
+            }
+            return null;
+        }
+
+        Expression PatchConditionalWithBoolNullable(BinaryExpression node) {
+            if(node.Left.NodeType != ExpressionType.Conditional || node.Right.NodeType != ExpressionType.Constant
+                    || node.Right.Type != typeof(bool?) || (bool?)(node.Right as ConstantExpression).Value != true) {
+                return null;
+            }
+            ConditionalExpression ifNode = (node.Left as ConditionalExpression);
+            if(ifNode.Test.NodeType != ExpressionType.Equal) {
+                return null;
+            }
+            BinaryExpression ifTest = (ifNode.Test as BinaryExpression);
+            if(ifTest.Right.NodeType != ExpressionType.Constant || ((ConstantExpression)ifTest.Right).Value != null) {
+                return null;
+            }
+            if(ifNode.IfTrue.NodeType != ExpressionType.Constant || ((ConstantExpression)ifNode.IfTrue).Value != null) {
+                return null;
+            }
+            if(ifNode.IfFalse.NodeType == ExpressionType.Convert && ifNode.IfFalse.Type == typeof(bool?)) {
+                return ((UnaryExpression)ifNode.IfFalse).Operand;
+            }
+            return ifNode.IfFalse;
+        }
+
+        private Expression PatchTypeAsEqualNullToTypeIs(BinaryExpression node) {
+            if(node.NodeType != ExpressionType.Equal) {
+                return null;
+            }
+            if(node.Right.NodeType != ExpressionType.Constant) {
+                return null;
+            }
+            if(((ConstantExpression)node.Right).Value != null) {
+                return null;
+            }
+            if(node.Left.NodeType != ExpressionType.TypeAs) {
+                return null;
+            }
+            UnaryExpression nodeTypeAs = (UnaryExpression)node.Left;
+            ParameterExpression operand = (nodeTypeAs.Operand as ParameterExpression);
+            if(operand != null) {
+                return Expression.Constant(node.Type.IsAssignableFrom(operand.Type));
+            }
+            return Expression.Not(Expression.TypeIs(nodeTypeAs.Operand, nodeTypeAs.Type));
+        }
+
+        Expression PatchTypeAsToConvert(UnaryExpression node) {
+            if(node.NodeType != ExpressionType.TypeAs) {
+                return null;
+            }
+            ParameterExpression operand = (node.Operand as ParameterExpression);
+            if(operand != null) {
+                if(node.Type.IsAssignableFrom(operand.Type)) {
+                    return node.Operand;
+                }
+            }
+            return Expression.Convert(node.Operand, node.Type);
         }
     }
 }

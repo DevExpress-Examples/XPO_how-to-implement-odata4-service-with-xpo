@@ -32,6 +32,9 @@ namespace WebApplication1.Models {
 
         [Association(@"OrdersReferencesCustomers")]
         public XPCollection<Order> Orders { get { return GetCollection<Order>(nameof(Orders)); } }
+
+        [Association(@"ContractsReferencesCustomers")]
+        public XPCollection<Contract> Contracts { get { return GetCollection<Contract>(nameof(Contracts)); } }
     }
 
 }

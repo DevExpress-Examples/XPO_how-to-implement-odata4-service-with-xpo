@@ -44,5 +44,4 @@ namespace WebApplication1.Models {
         [Association(@"ProductsReferencesOrderDetails")]
         public XPCollection<OrderDetail> OrderDetails { get { return GetCollection<OrderDetail>(nameof(OrderDetails)); } }
     }
-
 }
