@@ -359,5 +359,40 @@ namespace Tests
             Assert.IsNotNull(createdItem.Customer);
             Assert.AreEqual(order.Customer.CustomerID, createdItem.Customer.CustomerID);
         }
+
+
+        [Test]
+        public void RemoveLink() {
+            Container container = GetODataContainer();
+            Order order = new Order() {
+                Date = DateTimeOffset.Now,
+                OrderStatus = OrderStatus.New
+            };
+            container.AddToOrders(order);
+            Customer customer = new Customer() {
+                CustomerID = "Duffy",
+                CompanyName = "Acme"
+            };
+            container.AddToCustomers(customer);
+            container.SetLink(order, "Customer", customer);
+            var response1 = container.SaveChanges();
+            Assert.AreEqual(3, response1.Count());
+            Assert.AreEqual(2, response1.Count(r => r.StatusCode == (int)HttpStatusCode.Created));
+            Assert.IsTrue(response1.Any(r => r.StatusCode == (int)HttpStatusCode.NoContent));
+
+            container = GetODataContainer();
+            Order theOrder = container.Orders.Expand(t => t.Customer).Where(t => t.ID == order.ID).First();
+            Assert.IsNotNull(theOrder.Customer);
+            Assert.AreEqual(customer.CustomerID, theOrder.Customer.CustomerID);
+
+            container.SetLink(theOrder, "Customer", null);
+            var response2 = container.SaveChanges();
+            Assert.AreEqual(1, response2.Count());
+            Assert.AreEqual(1, response2.Count(r => r.StatusCode == (int)HttpStatusCode.NoContent));
+
+            container = GetODataContainer();
+            Order theOrder2 = container.Orders.Expand(t => t.Customer).Where(t => t.ID == order.ID).First();
+            Assert.IsNull(theOrder2.Customer);
+        }
     }
 }

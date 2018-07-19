@@ -148,6 +148,11 @@ namespace WebApplication1.Controllers {
         }
 
         [HttpDelete]
+        public IHttpActionResult DeleteRef([FromODataUri] int key, string navigationProperty, [FromBody] Uri link) {
+            return StatusCode(ApiHelper.DeleteRef<Order, int>(Request, key, navigationProperty, link));
+        }
+
+        [HttpDelete]
         public IHttpActionResult DeleteRef([FromODataUri] int key, [FromODataUri] int relatedKey, string navigationProperty) {
             return StatusCode(ApiHelper.DeleteRef<Order, int, int>(key, relatedKey, navigationProperty));
         }

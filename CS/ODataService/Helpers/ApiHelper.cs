@@ -61,6 +61,27 @@ namespace ODataService.Helpers {
             }
         }
 
+        public static HttpStatusCode DeleteRef<TEntity, TKey>(HttpRequestMessage request, TKey key, string navigationProperty, Uri link) {
+            using(UnitOfWork uow = ConnectionHelper.CreateSession()) {
+                TEntity entity = uow.GetObjectByKey<TEntity>(key);
+                if(entity == null) {
+                    return HttpStatusCode.NotFound;
+                }
+                var classInfo = uow.GetClassInfo<TEntity>();
+                var memberInfo = classInfo.FindMember(navigationProperty);
+                if(memberInfo == null) {
+                    return HttpStatusCode.BadRequest;
+                }
+                if(memberInfo.ReferenceType != null) {
+                    memberInfo.SetValue(entity, null);
+                } else {
+                    return HttpStatusCode.BadRequest;
+                }
+                uow.CommitChanges();
+                return HttpStatusCode.NoContent;
+            }
+        }
+
         public static HttpStatusCode DeleteRef<TEntity, TKey, TRelatedKey>(TKey key, TRelatedKey relatedKey, string navigationProperty) {
             using(UnitOfWork uow = ConnectionHelper.CreateSession()) {
                 TEntity entity = uow.GetObjectByKey<TEntity>(key);
