@@ -329,5 +329,35 @@ namespace Tests
             Assert.IsNotNull(order.ParentDocument);
             Assert.IsNull(updatedItem.ParentDocument);
         }
+
+        [Test]
+        public void SetLink() {
+            Container container = GetODataContainer();
+            Order order = new Order() {
+                Date = DateTimeOffset.Now,
+                OrderStatus = OrderStatus.New
+            };
+            container.AddToOrders(order);
+            var response1 = container.SaveChanges();
+
+            Assert.AreEqual(1, response1.Count());
+            Assert.AreEqual((int)HttpStatusCode.Created, response1.First().StatusCode);
+            Customer customer = new Customer() {
+                CustomerID = "Duffy",
+                CompanyName = "Acme"
+            };
+            container.AddToCustomers(customer);
+            order.Customer = customer;
+            container.SetLink(order, "Customer", customer);
+            var response2 = container.SaveChanges();
+            Assert.AreEqual(2, response2.Count());
+            Assert.IsTrue(response2.Any(r => r.StatusCode == (int)HttpStatusCode.Created));
+            Assert.IsTrue(response2.Any(r => r.StatusCode == (int)HttpStatusCode.NoContent));
+
+            container = GetODataContainer();
+            Order createdItem = container.Orders.Expand(t => t.Customer).Where(t => t.ID == order.ID).First();
+            Assert.IsNotNull(createdItem.Customer);
+            Assert.AreEqual(order.Customer.CustomerID, createdItem.Customer.CustomerID);
+        }
     }
 }
