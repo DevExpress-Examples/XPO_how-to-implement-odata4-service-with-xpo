@@ -42,13 +42,41 @@ namespace ODataService.Helpers {
                 }
                 var classInfo = uow.GetClassInfo<TEntity>();
                 var memberInfo = classInfo.FindMember(navigationProperty);
-                if(memberInfo == null || !memberInfo.IsAssociationList) {
+                if(memberInfo == null) {
                     return HttpStatusCode.BadRequest;
                 }
-                int relatedKey = UriHelper.GetKeyFromUri<int>(request, link);
-                var reference = uow.GetObjectByKey(memberInfo.CollectionElementType, relatedKey);
-                var collection = (IList)memberInfo.GetValue(entity);
-                collection.Add(reference);
+                object relatedKey = UriHelper.GetKeyFromUri<object>(request, link);
+                if(memberInfo.IsAssociationList) {
+                    var reference = uow.GetObjectByKey(memberInfo.CollectionElementType, relatedKey);
+                    var collection = (IList)memberInfo.GetValue(entity);
+                    collection.Add(reference);
+                } else if(memberInfo.ReferenceType != null) {
+                    var reference = uow.GetObjectByKey(memberInfo.ReferenceType, relatedKey);
+                    memberInfo.SetValue(entity, reference);
+                } else {
+                    return HttpStatusCode.BadRequest;
+                }
+                uow.CommitChanges();
+                return HttpStatusCode.NoContent;
+            }
+        }
+
+        public static HttpStatusCode DeleteRef<TEntity, TKey>(HttpRequestMessage request, TKey key, string navigationProperty, Uri link) {
+            using(UnitOfWork uow = ConnectionHelper.CreateSession()) {
+                TEntity entity = uow.GetObjectByKey<TEntity>(key);
+                if(entity == null) {
+                    return HttpStatusCode.NotFound;
+                }
+                var classInfo = uow.GetClassInfo<TEntity>();
+                var memberInfo = classInfo.FindMember(navigationProperty);
+                if(memberInfo == null) {
+                    return HttpStatusCode.BadRequest;
+                }
+                if(memberInfo.ReferenceType != null) {
+                    memberInfo.SetValue(entity, null);
+                } else {
+                    return HttpStatusCode.BadRequest;
+                }
                 uow.CommitChanges();
                 return HttpStatusCode.NoContent;
             }
