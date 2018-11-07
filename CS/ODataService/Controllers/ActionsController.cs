@@ -8,8 +8,8 @@ using System.Web.Http;
 using DevExpress.Xpo;
 using WebApplication1.Models;
 using ODataService.Helpers;
-using System.Web.OData;
-using System.Web.OData.Routing;
+using Microsoft.AspNet.OData;
+using Microsoft.AspNet.OData.Routing;
 
 namespace WebApplication1.Controllers {
     public class ActionsController : ODataController {

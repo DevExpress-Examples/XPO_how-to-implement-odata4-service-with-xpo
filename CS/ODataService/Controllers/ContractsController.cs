@@ -5,12 +5,11 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.OData;
-using System.Web.OData.Extensions;
-using System.Web.OData.Routing;
 using DevExpress.Xpo;
 using WebApplication1.Models;
 using ODataService.Helpers;
+using Microsoft.AspNet.OData;
+using Microsoft.AspNet.OData.Routing;
 
 namespace WebApplication1.Controllers {
     public class ContractsController : ODataController {

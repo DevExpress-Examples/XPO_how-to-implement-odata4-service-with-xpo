@@ -6,8 +6,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
-using System.Web.OData;
 using DevExpress.Xpo;
+using Microsoft.AspNet.OData;
 
 namespace ODataService.Helpers {
     public static class ApiHelper {

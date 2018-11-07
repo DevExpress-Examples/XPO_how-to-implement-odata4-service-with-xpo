@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using System.Web.OData;
 using DevExpress.Xpo;
 using WebApplication1.Models;
 using ODataService.Helpers;
+using Microsoft.AspNet.OData;
+using Microsoft.AspNet.OData.Routing;
 
 namespace WebApplication1.Controllers {
     public class OrderDetailsController : ODataController {
