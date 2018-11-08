@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 26.06.2018 15:52:48
+// Generation date: 07.11.2018 17:40:09
 namespace WebApplication1.Models
 {
     /// <summary>

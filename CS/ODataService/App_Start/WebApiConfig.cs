@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Http;
-using System.Web.OData.Batch;
-using System.Web.OData.Builder;
-using System.Web.OData.Extensions;
 using WebApplication1.Models;
+using Microsoft.AspNet.OData.Batch;
+using Microsoft.AspNet.OData.Extensions;
+using Microsoft.AspNet.OData.Builder;
 
 namespace WebApplication1
 {

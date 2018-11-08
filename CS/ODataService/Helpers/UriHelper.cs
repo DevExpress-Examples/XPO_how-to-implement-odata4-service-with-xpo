@@ -1,13 +1,12 @@
-﻿using Microsoft.OData;
+﻿using Microsoft.AspNet.OData;
+using Microsoft.AspNet.OData.Extensions;
+using Microsoft.AspNet.OData.Routing;
 using Microsoft.OData.UriParser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http.Routing;
-using System.Web.OData;
-using System.Web.OData.Extensions;
-using System.Web.OData.Routing;
 
 namespace ODataService.Helpers {
     public static class UriHelper {
