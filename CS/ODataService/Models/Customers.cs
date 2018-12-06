@@ -6,8 +6,8 @@ using System.Collections.Generic;
 namespace WebApplication1.Models {
 
     [Persistent("Customers")]
-    public class Customer : XPLiteObject
-    {
+    public class Customer : XPLiteObject {
+    
         public Customer(Session session) : base(session) { }
         public Customer() : base(XpoDefault.Session) { }
 
