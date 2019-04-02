@@ -242,6 +242,24 @@ namespace ODataService.Helpers {
             return base.VisitMethodCall(node);
         }
 
+        protected override Expression VisitConditional(ConditionalExpression node) {
+            var nodeTest = Process(node.Test);
+            var nodeTrue = Process(node.IfTrue) as ConstantExpression;
+            if(nodeTrue != null && nodeTrue.Value == null) {
+                var ifTest = nodeTest as BinaryExpression;
+                if(ifTest != null && ifTest.NodeType == ExpressionType.Equal) {
+                    var testLeft = Process(ifTest.Left);
+                    var testRight = Process(ifTest.Right) as ConstantExpression;
+                    if(testRight != null && testRight.Value == null) {
+                        if(testLeft.NodeType == ExpressionType.Parameter || testLeft.NodeType == ExpressionType.MemberAccess) {
+                            return Process(node.IfFalse);
+                        }
+                    }
+                }
+            }
+            return base.VisitConditional(node);
+        }
+
         Expression PatchCompareString(MethodCallExpression node) {
             if(node.Method.DeclaringType == typeof(string) && node.Arguments.Count == 3) {
                 MethodInfo method = typeof(string).GetMethod("Compare", new Type[] { typeof(string), typeof(string) });
@@ -251,41 +269,49 @@ namespace ODataService.Helpers {
         }
 
         Expression PatchConditionalWithBoolNullable(BinaryExpression node) {
-            if(node.Left.NodeType != ExpressionType.Conditional || node.Right.NodeType != ExpressionType.Constant
-                    || node.Right.Type != typeof(bool?) || (bool?)(node.Right as ConstantExpression).Value != true) {
+            Expression nodeLeft = Process(node.Left);
+            Expression nodeRight = Process(node.Right);
+            if(nodeLeft.NodeType != ExpressionType.Conditional || nodeRight.NodeType != ExpressionType.Constant
+                    || nodeRight.Type != typeof(bool?) || (bool?)(nodeRight as ConstantExpression).Value != true) {
                 return null;
             }
-            ConditionalExpression ifNode = (node.Left as ConditionalExpression);
-            if(ifNode.Test.NodeType != ExpressionType.Equal) {
+            ConditionalExpression ifNode = (nodeLeft as ConditionalExpression);
+            Expression ifNodeTest = Process(ifNode.Test);
+            if(ifNodeTest.NodeType != ExpressionType.Equal) {
                 return null;
             }
-            BinaryExpression ifTest = (ifNode.Test as BinaryExpression);
-            if(ifTest.Right.NodeType != ExpressionType.Constant || ((ConstantExpression)ifTest.Right).Value != null) {
+            BinaryExpression ifTest = (ifNodeTest as BinaryExpression);
+            Expression ifTestRight = Process(ifTest.Right);
+            if(ifTestRight.NodeType != ExpressionType.Constant || ((ConstantExpression)ifTestRight).Value != null) {
                 return null;
             }
-            if(ifNode.IfTrue.NodeType != ExpressionType.Constant || ((ConstantExpression)ifNode.IfTrue).Value != null) {
+            Expression ifNodeIfTrue = Process(ifNode.IfTrue);
+            if(ifNodeIfTrue.NodeType != ExpressionType.Constant || ((ConstantExpression)ifNodeIfTrue).Value != null) {
                 return null;
             }
-            if(ifNode.IfFalse.NodeType == ExpressionType.Convert && ifNode.IfFalse.Type == typeof(bool?)) {
-                return ((UnaryExpression)ifNode.IfFalse).Operand;
+            Expression ifNodeIfFalse = Process(ifNode.IfFalse);
+            if(ifNodeIfFalse.NodeType == ExpressionType.Convert && ifNodeIfFalse.Type == typeof(bool?)) {
+                return ((UnaryExpression)ifNodeIfFalse).Operand;
             }
-            return ifNode.IfFalse;
+            return ifNodeIfFalse;
         }
 
         private Expression PatchTypeAsEqualNullToTypeIs(BinaryExpression node) {
             if(node.NodeType != ExpressionType.Equal) {
                 return null;
             }
-            if(node.Right.NodeType != ExpressionType.Constant) {
+            var nodeRight = Process(node.Right);
+            if(nodeRight.NodeType != ExpressionType.Constant) {
                 return null;
             }
-            if(((ConstantExpression)node.Right).Value != null) {
+            if(((ConstantExpression)nodeRight).Value != null) {
                 return null;
             }
-            if(node.Left.NodeType != ExpressionType.TypeAs) {
+            var nodeLeft = Process(node.Left);
+            if(nodeLeft.NodeType != ExpressionType.TypeAs && nodeLeft.NodeType != ExpressionType.Convert) {
                 return null;
             }
-            UnaryExpression nodeTypeAs = (UnaryExpression)node.Left;
+            UnaryExpression nodeTypeAs = (UnaryExpression)nodeLeft;
             ParameterExpression operand = (nodeTypeAs.Operand as ParameterExpression);
             if(operand != null) {
                 return Expression.Constant(node.Type.IsAssignableFrom(operand.Type));

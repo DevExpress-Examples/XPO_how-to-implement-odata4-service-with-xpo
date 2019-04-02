@@ -287,5 +287,20 @@ namespace Tests {
             Assert.AreEqual(1, contracts.Count);
             Assert.AreEqual("2018-0001", contracts[0].Number);
         }
+
+        [Test]
+        public void T727833() {
+            Container container = GetODataContainer();
+            var orderDetail = container.OrderDetails.Expand("Product").Expand("Order").First();
+            int orderId = orderDetail.Order.ID;
+            int productId = orderDetail.Product.ProductID;
+            var orders = container.Orders
+                .Expand("Customer")
+                .Expand("OrderDetails($expand=Product)")
+                .Where(o => o.OrderDetails.Any(p => p.Product.ProductID == productId) && o.ID == orderId)
+                .ToList();
+            Assert.AreEqual(1, orders.Count);
+            Assert.AreEqual(orderId, orders[0].ID);
+        }
     }
 }
