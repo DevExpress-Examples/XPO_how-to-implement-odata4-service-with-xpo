@@ -291,7 +291,7 @@ namespace Tests {
         [Test]
         public void T727833() {
             Container container = GetODataContainer();
-            var orderDetail = container.OrderDetails.Expand("Product").Expand("Order").First();
+            var orderDetail = container.OrderDetails.Expand("Product").Expand("Order($expand=Customer)").ToList().First(t => t.Order.Customer != null);
             int orderId = orderDetail.Order.ID;
             int productId = orderDetail.Product.ProductID;
             var orders = container.Orders
@@ -301,6 +301,7 @@ namespace Tests {
                 .ToList();
             Assert.AreEqual(1, orders.Count);
             Assert.AreEqual(orderId, orders[0].ID);
+            Assert.IsNotNull(orders[0].Customer);
         }
     }
 }

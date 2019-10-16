@@ -255,6 +255,14 @@ namespace ODataService.Helpers {
                             return Process(node.IfFalse);
                         }
                     }
+                } else {
+                    var unaryExpr = nodeTest as UnaryExpression;
+                    if(unaryExpr != null && unaryExpr.NodeType == ExpressionType.Not) {
+                        var typeBinExpr = unaryExpr.Operand as TypeBinaryExpression;
+                        if(typeBinExpr != null && typeBinExpr.NodeType == ExpressionType.TypeIs) {
+                            return Process(node.IfFalse);
+                        }
+                    }
                 }
             }
             return base.VisitConditional(node);
@@ -307,15 +315,10 @@ namespace ODataService.Helpers {
             if(((ConstantExpression)nodeRight).Value != null) {
                 return null;
             }
-            var nodeLeft = Process(node.Left);
-            if(nodeLeft.NodeType != ExpressionType.TypeAs && nodeLeft.NodeType != ExpressionType.Convert) {
+            if(node.Left.NodeType != ExpressionType.TypeAs) {
                 return null;
             }
-            UnaryExpression nodeTypeAs = (UnaryExpression)nodeLeft;
-            ParameterExpression operand = (nodeTypeAs.Operand as ParameterExpression);
-            if(operand != null) {
-                return Expression.Constant(node.Type.IsAssignableFrom(operand.Type));
-            }
+            UnaryExpression nodeTypeAs = (UnaryExpression)node.Left;
             return Expression.Not(Expression.TypeIs(nodeTypeAs.Operand, nodeTypeAs.Type));
         }
 
