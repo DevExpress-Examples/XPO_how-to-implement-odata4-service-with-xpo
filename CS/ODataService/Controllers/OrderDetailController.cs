@@ -9,7 +9,7 @@ using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Routing;
 
 namespace WebApplication1.Controllers {
-    public class OrderDetailsController : ODataController {
+    public class OrderDetailController : ODataController {
 
         private UnitOfWork Session;        
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 07.11.2018 17:40:09
+// Generation date: 14.02.2020 11:51:39
 namespace WebApplication1.Models
 {
     /// <summary>
@@ -37,7 +37,7 @@ namespace WebApplication1.Models
         /// <summary>
         /// There are no comments for LinkedDocuments in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> LinkedDocuments
         {
             get
@@ -53,12 +53,12 @@ namespace WebApplication1.Models
                 return this._LinkedDocuments;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> _LinkedDocuments;
         /// <summary>
         /// There are no comments for ParentDocument in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.BaseDocumentSingle ParentDocument
         {
             get
@@ -74,7 +74,7 @@ namespace WebApplication1.Models
                 return this._ParentDocument;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.BaseDocumentSingle _ParentDocument;
     }
     /// <summary>
@@ -84,12 +84,12 @@ namespace WebApplication1.Models
     /// ID
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("ID")]
-    public abstract partial class BaseDocument : global::Microsoft.OData.Client.BaseEntityType, global::System.ComponentModel.INotifyPropertyChanged
+    public abstract partial class BaseDocument : global::Microsoft.OData.Client.BaseEntityType
     {
         /// <summary>
         /// There are no comments for Property ID in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public int ID
         {
             get
@@ -101,17 +101,16 @@ namespace WebApplication1.Models
                 this.OnIDChanging(value);
                 this._ID = value;
                 this.OnIDChanged();
-                this.OnPropertyChanged("ID");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private int _ID;
         partial void OnIDChanging(int value);
         partial void OnIDChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::System.Nullable<global::System.DateTimeOffset> Date
         {
             get
@@ -123,18 +122,17 @@ namespace WebApplication1.Models
                 this.OnDateChanging(value);
                 this._Date = value;
                 this.OnDateChanged();
-                this.OnPropertyChanged("Date");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::System.Nullable<global::System.DateTimeOffset> _Date;
         partial void OnDateChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnDateChanged();
         /// <summary>
         /// There are no comments for Property LinkedDocuments in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.BaseDocument> LinkedDocuments
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.BaseDocument> LinkedDocuments
         {
             get
             {
@@ -145,17 +143,16 @@ namespace WebApplication1.Models
                 this.OnLinkedDocumentsChanging(value);
                 this._LinkedDocuments = value;
                 this.OnLinkedDocumentsChanged();
-                this.OnPropertyChanged("LinkedDocuments");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.BaseDocument> _LinkedDocuments = new global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.BaseDocument>(null, global::Microsoft.OData.Client.TrackingMode.None);
-        partial void OnLinkedDocumentsChanging(global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.BaseDocument> value);
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        private global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.BaseDocument> _LinkedDocuments = new global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.BaseDocument>();
+        partial void OnLinkedDocumentsChanging(global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.BaseDocument> value);
         partial void OnLinkedDocumentsChanged();
         /// <summary>
         /// There are no comments for Property ParentDocument in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.BaseDocument ParentDocument
         {
             get
@@ -167,30 +164,12 @@ namespace WebApplication1.Models
                 this.OnParentDocumentChanging(value);
                 this._ParentDocument = value;
                 this.OnParentDocumentChanged();
-                this.OnPropertyChanged("ParentDocument");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.BaseDocument _ParentDocument;
         partial void OnParentDocumentChanging(global::WebApplication1.Models.BaseDocument value);
         partial void OnParentDocumentChanged();
-        /// <summary>
-        /// This event is raised when the value of the property is changed
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        /// <summary>
-        /// The value of the property is changed
-        /// </summary>
-        /// <param name="property">property name</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
     }
     /// <summary>
     /// There are no comments for CustomerSingle in the schema.
@@ -218,7 +197,7 @@ namespace WebApplication1.Models
         /// <summary>
         /// There are no comments for Orders in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Order> Orders
         {
             get
@@ -234,12 +213,12 @@ namespace WebApplication1.Models
                 return this._Orders;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Order> _Orders;
         /// <summary>
         /// There are no comments for Contracts in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Contract> Contracts
         {
             get
@@ -255,7 +234,7 @@ namespace WebApplication1.Models
                 return this._Contracts;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Contract> _Contracts;
     }
     /// <summary>
@@ -265,13 +244,13 @@ namespace WebApplication1.Models
     /// CustomerID
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("CustomerID")]
-    public partial class Customer : global::Microsoft.OData.Client.BaseEntityType, global::System.ComponentModel.INotifyPropertyChanged
+    public partial class Customer : global::Microsoft.OData.Client.BaseEntityType
     {
         /// <summary>
         /// Create a new Customer object.
         /// </summary>
         /// <param name="customerID">Initial value of CustomerID.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public static Customer CreateCustomer(string customerID)
         {
             Customer customer = new Customer();
@@ -281,7 +260,7 @@ namespace WebApplication1.Models
         /// <summary>
         /// There are no comments for Property CustomerID in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public string CustomerID
         {
             get
@@ -293,17 +272,16 @@ namespace WebApplication1.Models
                 this.OnCustomerIDChanging(value);
                 this._CustomerID = value;
                 this.OnCustomerIDChanged();
-                this.OnPropertyChanged("CustomerID");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private string _CustomerID;
         partial void OnCustomerIDChanging(string value);
         partial void OnCustomerIDChanged();
         /// <summary>
         /// There are no comments for Property CompanyName in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public string CompanyName
         {
             get
@@ -315,18 +293,17 @@ namespace WebApplication1.Models
                 this.OnCompanyNameChanging(value);
                 this._CompanyName = value;
                 this.OnCompanyNameChanged();
-                this.OnPropertyChanged("CompanyName");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private string _CompanyName;
         partial void OnCompanyNameChanging(string value);
         partial void OnCompanyNameChanged();
         /// <summary>
         /// There are no comments for Property Orders in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.Order> Orders
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.Order> Orders
         {
             get
             {
@@ -337,18 +314,17 @@ namespace WebApplication1.Models
                 this.OnOrdersChanging(value);
                 this._Orders = value;
                 this.OnOrdersChanged();
-                this.OnPropertyChanged("Orders");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.Order> _Orders = new global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.Order>(null, global::Microsoft.OData.Client.TrackingMode.None);
-        partial void OnOrdersChanging(global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.Order> value);
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        private global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.Order> _Orders = new global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.Order>();
+        partial void OnOrdersChanging(global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.Order> value);
         partial void OnOrdersChanged();
         /// <summary>
         /// There are no comments for Property Contracts in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.Contract> Contracts
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.Contract> Contracts
         {
             get
             {
@@ -359,30 +335,12 @@ namespace WebApplication1.Models
                 this.OnContractsChanging(value);
                 this._Contracts = value;
                 this.OnContractsChanged();
-                this.OnPropertyChanged("Contracts");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.Contract> _Contracts = new global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.Contract>(null, global::Microsoft.OData.Client.TrackingMode.None);
-        partial void OnContractsChanging(global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.Contract> value);
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        private global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.Contract> _Contracts = new global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.Contract>();
+        partial void OnContractsChanging(global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.Contract> value);
         partial void OnContractsChanged();
-        /// <summary>
-        /// This event is raised when the value of the property is changed
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        /// <summary>
-        /// The value of the property is changed
-        /// </summary>
-        /// <param name="property">property name</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
     }
     /// <summary>
     /// There are no comments for OrderSingle in the schema.
@@ -410,7 +368,7 @@ namespace WebApplication1.Models
         /// <summary>
         /// There are no comments for Customer in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.CustomerSingle Customer
         {
             get
@@ -426,12 +384,12 @@ namespace WebApplication1.Models
                 return this._Customer;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.CustomerSingle _Customer;
         /// <summary>
         /// There are no comments for OrderDetails in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.OrderDetail> OrderDetails
         {
             get
@@ -447,12 +405,12 @@ namespace WebApplication1.Models
                 return this._OrderDetails;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.OrderDetail> _OrderDetails;
         /// <summary>
         /// There are no comments for LinkedDocuments in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> LinkedDocuments
         {
             get
@@ -468,12 +426,12 @@ namespace WebApplication1.Models
                 return this._LinkedDocuments;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> _LinkedDocuments;
         /// <summary>
         /// There are no comments for ParentDocument in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.BaseDocumentSingle ParentDocument
         {
             get
@@ -489,7 +447,7 @@ namespace WebApplication1.Models
                 return this._ParentDocument;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.BaseDocumentSingle _ParentDocument;
     }
     /// <summary>
@@ -506,7 +464,7 @@ namespace WebApplication1.Models
         /// </summary>
         /// <param name="ID">Initial value of ID.</param>
         /// <param name="orderStatus">Initial value of OrderStatus.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public static Order CreateOrder(int ID, global::WebApplication1.Models.OrderStatus orderStatus)
         {
             Order order = new Order();
@@ -517,7 +475,7 @@ namespace WebApplication1.Models
         /// <summary>
         /// There are no comments for Property OrderStatus in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.OrderStatus OrderStatus
         {
             get
@@ -529,17 +487,16 @@ namespace WebApplication1.Models
                 this.OnOrderStatusChanging(value);
                 this._OrderStatus = value;
                 this.OnOrderStatusChanged();
-                this.OnPropertyChanged("OrderStatus");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.OrderStatus _OrderStatus;
         partial void OnOrderStatusChanging(global::WebApplication1.Models.OrderStatus value);
         partial void OnOrderStatusChanged();
         /// <summary>
         /// There are no comments for Property Customer in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.Customer Customer
         {
             get
@@ -551,18 +508,17 @@ namespace WebApplication1.Models
                 this.OnCustomerChanging(value);
                 this._Customer = value;
                 this.OnCustomerChanged();
-                this.OnPropertyChanged("Customer");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.Customer _Customer;
         partial void OnCustomerChanging(global::WebApplication1.Models.Customer value);
         partial void OnCustomerChanged();
         /// <summary>
         /// There are no comments for Property OrderDetails in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.OrderDetail> OrderDetails
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.OrderDetail> OrderDetails
         {
             get
             {
@@ -573,12 +529,11 @@ namespace WebApplication1.Models
                 this.OnOrderDetailsChanging(value);
                 this._OrderDetails = value;
                 this.OnOrderDetailsChanged();
-                this.OnPropertyChanged("OrderDetails");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.OrderDetail> _OrderDetails = new global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.OrderDetail>(null, global::Microsoft.OData.Client.TrackingMode.None);
-        partial void OnOrderDetailsChanging(global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.OrderDetail> value);
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        private global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.OrderDetail> _OrderDetails = new global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.OrderDetail>();
+        partial void OnOrderDetailsChanging(global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.OrderDetail> value);
         partial void OnOrderDetailsChanged();
     }
     /// <summary>
@@ -607,7 +562,7 @@ namespace WebApplication1.Models
         /// <summary>
         /// There are no comments for Customer in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.CustomerSingle Customer
         {
             get
@@ -623,12 +578,12 @@ namespace WebApplication1.Models
                 return this._Customer;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.CustomerSingle _Customer;
         /// <summary>
         /// There are no comments for LinkedDocuments in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> LinkedDocuments
         {
             get
@@ -644,12 +599,12 @@ namespace WebApplication1.Models
                 return this._LinkedDocuments;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> _LinkedDocuments;
         /// <summary>
         /// There are no comments for ParentDocument in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.BaseDocumentSingle ParentDocument
         {
             get
@@ -665,7 +620,7 @@ namespace WebApplication1.Models
                 return this._ParentDocument;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.BaseDocumentSingle _ParentDocument;
     }
     /// <summary>
@@ -681,7 +636,7 @@ namespace WebApplication1.Models
         /// Create a new Contract object.
         /// </summary>
         /// <param name="ID">Initial value of ID.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public static Contract CreateContract(int ID)
         {
             Contract contract = new Contract();
@@ -691,7 +646,7 @@ namespace WebApplication1.Models
         /// <summary>
         /// There are no comments for Property Number in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public string Number
         {
             get
@@ -703,17 +658,16 @@ namespace WebApplication1.Models
                 this.OnNumberChanging(value);
                 this._Number = value;
                 this.OnNumberChanged();
-                this.OnPropertyChanged("Number");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private string _Number;
         partial void OnNumberChanging(string value);
         partial void OnNumberChanged();
         /// <summary>
         /// There are no comments for Property Customer in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.Customer Customer
         {
             get
@@ -725,10 +679,9 @@ namespace WebApplication1.Models
                 this.OnCustomerChanging(value);
                 this._Customer = value;
                 this.OnCustomerChanged();
-                this.OnPropertyChanged("Customer");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.Customer _Customer;
         partial void OnCustomerChanging(global::WebApplication1.Models.Customer value);
         partial void OnCustomerChanged();
@@ -759,7 +712,7 @@ namespace WebApplication1.Models
         /// <summary>
         /// There are no comments for OrderDetails in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.OrderDetail> OrderDetails
         {
             get
@@ -775,7 +728,7 @@ namespace WebApplication1.Models
                 return this._OrderDetails;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.OrderDetail> _OrderDetails;
     }
     /// <summary>
@@ -785,13 +738,13 @@ namespace WebApplication1.Models
     /// ProductID
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("ProductID")]
-    public partial class Product : global::Microsoft.OData.Client.BaseEntityType, global::System.ComponentModel.INotifyPropertyChanged
+    public partial class Product : global::Microsoft.OData.Client.BaseEntityType
     {
         /// <summary>
         /// Create a new Product object.
         /// </summary>
         /// <param name="productID">Initial value of ProductID.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public static Product CreateProduct(int productID)
         {
             Product product = new Product();
@@ -801,7 +754,7 @@ namespace WebApplication1.Models
         /// <summary>
         /// There are no comments for Property ProductID in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public int ProductID
         {
             get
@@ -813,17 +766,16 @@ namespace WebApplication1.Models
                 this.OnProductIDChanging(value);
                 this._ProductID = value;
                 this.OnProductIDChanged();
-                this.OnPropertyChanged("ProductID");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private int _ProductID;
         partial void OnProductIDChanging(int value);
         partial void OnProductIDChanged();
         /// <summary>
         /// There are no comments for Property ProductName in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public string ProductName
         {
             get
@@ -835,17 +787,16 @@ namespace WebApplication1.Models
                 this.OnProductNameChanging(value);
                 this._ProductName = value;
                 this.OnProductNameChanged();
-                this.OnPropertyChanged("ProductName");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private string _ProductName;
         partial void OnProductNameChanging(string value);
         partial void OnProductNameChanged();
         /// <summary>
         /// There are no comments for Property UnitPrice in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::System.Nullable<decimal> UnitPrice
         {
             get
@@ -857,17 +808,16 @@ namespace WebApplication1.Models
                 this.OnUnitPriceChanging(value);
                 this._UnitPrice = value;
                 this.OnUnitPriceChanged();
-                this.OnPropertyChanged("UnitPrice");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::System.Nullable<decimal> _UnitPrice;
         partial void OnUnitPriceChanging(global::System.Nullable<decimal> value);
         partial void OnUnitPriceChanged();
         /// <summary>
         /// There are no comments for Property Picture in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public byte[] Picture
         {
             get
@@ -879,18 +829,17 @@ namespace WebApplication1.Models
                 this.OnPictureChanging(value);
                 this._Picture = value;
                 this.OnPictureChanged();
-                this.OnPropertyChanged("Picture");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private byte[] _Picture;
         partial void OnPictureChanging(byte[] value);
         partial void OnPictureChanged();
         /// <summary>
         /// There are no comments for Property OrderDetails in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.OrderDetail> OrderDetails
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.OrderDetail> OrderDetails
         {
             get
             {
@@ -901,30 +850,12 @@ namespace WebApplication1.Models
                 this.OnOrderDetailsChanging(value);
                 this._OrderDetails = value;
                 this.OnOrderDetailsChanged();
-                this.OnPropertyChanged("OrderDetails");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.OrderDetail> _OrderDetails = new global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.OrderDetail>(null, global::Microsoft.OData.Client.TrackingMode.None);
-        partial void OnOrderDetailsChanging(global::Microsoft.OData.Client.DataServiceCollection<global::WebApplication1.Models.OrderDetail> value);
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        private global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.OrderDetail> _OrderDetails = new global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.OrderDetail>();
+        partial void OnOrderDetailsChanging(global::System.Collections.ObjectModel.Collection<global::WebApplication1.Models.OrderDetail> value);
         partial void OnOrderDetailsChanged();
-        /// <summary>
-        /// This event is raised when the value of the property is changed
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        /// <summary>
-        /// The value of the property is changed
-        /// </summary>
-        /// <param name="property">property name</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
     }
     /// <summary>
     /// There are no comments for OrderDetailSingle in the schema.
@@ -952,7 +883,7 @@ namespace WebApplication1.Models
         /// <summary>
         /// There are no comments for Order in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.OrderSingle Order
         {
             get
@@ -968,12 +899,12 @@ namespace WebApplication1.Models
                 return this._Order;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.OrderSingle _Order;
         /// <summary>
         /// There are no comments for Product in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.ProductSingle Product
         {
             get
@@ -989,7 +920,7 @@ namespace WebApplication1.Models
                 return this._Product;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.ProductSingle _Product;
     }
     /// <summary>
@@ -999,7 +930,7 @@ namespace WebApplication1.Models
     /// OrderDetailID
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("OrderDetailID")]
-    public partial class OrderDetail : global::Microsoft.OData.Client.BaseEntityType, global::System.ComponentModel.INotifyPropertyChanged
+    public partial class OrderDetail : global::Microsoft.OData.Client.BaseEntityType
     {
         /// <summary>
         /// Create a new OrderDetail object.
@@ -1007,7 +938,7 @@ namespace WebApplication1.Models
         /// <param name="orderDetailID">Initial value of OrderDetailID.</param>
         /// <param name="unitPrice">Initial value of UnitPrice.</param>
         /// <param name="quantity">Initial value of Quantity.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public static OrderDetail CreateOrderDetail(int orderDetailID, decimal unitPrice, short quantity)
         {
             OrderDetail orderDetail = new OrderDetail();
@@ -1019,7 +950,7 @@ namespace WebApplication1.Models
         /// <summary>
         /// There are no comments for Property OrderDetailID in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public int OrderDetailID
         {
             get
@@ -1031,17 +962,16 @@ namespace WebApplication1.Models
                 this.OnOrderDetailIDChanging(value);
                 this._OrderDetailID = value;
                 this.OnOrderDetailIDChanged();
-                this.OnPropertyChanged("OrderDetailID");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private int _OrderDetailID;
         partial void OnOrderDetailIDChanging(int value);
         partial void OnOrderDetailIDChanged();
         /// <summary>
         /// There are no comments for Property UnitPrice in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public decimal UnitPrice
         {
             get
@@ -1053,17 +983,16 @@ namespace WebApplication1.Models
                 this.OnUnitPriceChanging(value);
                 this._UnitPrice = value;
                 this.OnUnitPriceChanged();
-                this.OnPropertyChanged("UnitPrice");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private decimal _UnitPrice;
         partial void OnUnitPriceChanging(decimal value);
         partial void OnUnitPriceChanged();
         /// <summary>
         /// There are no comments for Property Quantity in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public short Quantity
         {
             get
@@ -1075,17 +1004,16 @@ namespace WebApplication1.Models
                 this.OnQuantityChanging(value);
                 this._Quantity = value;
                 this.OnQuantityChanged();
-                this.OnPropertyChanged("Quantity");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private short _Quantity;
         partial void OnQuantityChanging(short value);
         partial void OnQuantityChanged();
         /// <summary>
         /// There are no comments for Property Order in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.Order Order
         {
             get
@@ -1097,17 +1025,16 @@ namespace WebApplication1.Models
                 this.OnOrderChanging(value);
                 this._Order = value;
                 this.OnOrderChanged();
-                this.OnPropertyChanged("Order");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.Order _Order;
         partial void OnOrderChanging(global::WebApplication1.Models.Order value);
         partial void OnOrderChanged();
         /// <summary>
         /// There are no comments for Property Product in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public global::WebApplication1.Models.Product Product
         {
             get
@@ -1119,30 +1046,12 @@ namespace WebApplication1.Models
                 this.OnProductChanging(value);
                 this._Product = value;
                 this.OnProductChanged();
-                this.OnPropertyChanged("Product");
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private global::WebApplication1.Models.Product _Product;
         partial void OnProductChanging(global::WebApplication1.Models.Product value);
         partial void OnProductChanged();
-        /// <summary>
-        /// This event is raised when the value of the property is changed
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        /// <summary>
-        /// The value of the property is changed
-        /// </summary>
-        /// <param name="property">property name</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
     }
     /// <summary>
     /// There are no comments for OrderStatus in the schema.
@@ -1162,158 +1071,158 @@ namespace WebApplication1.Models
         /// <summary>
         /// Get an entity of type global::WebApplication1.Models.BaseDocument as global::WebApplication1.Models.BaseDocumentSingle specified by key from an entity set
         /// </summary>
-        /// <param name="source">source entity set</param>
+        /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::WebApplication1.Models.BaseDocumentSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        public static global::WebApplication1.Models.BaseDocumentSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> _source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
-            return new global::WebApplication1.Models.BaseDocumentSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::WebApplication1.Models.BaseDocumentSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
         /// Get an entity of type global::WebApplication1.Models.BaseDocument as global::WebApplication1.Models.BaseDocumentSingle specified by key from an entity set
         /// </summary>
-        /// <param name="source">source entity set</param>
+        /// <param name="_source">source entity set</param>
         /// <param name="iD">The value of iD</param>
-        public static global::WebApplication1.Models.BaseDocumentSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> source,
+        public static global::WebApplication1.Models.BaseDocumentSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> _source,
             int iD)
         {
             global::System.Collections.Generic.Dictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "ID", iD }
             };
-            return new global::WebApplication1.Models.BaseDocumentSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::WebApplication1.Models.BaseDocumentSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
         /// Get an entity of type global::WebApplication1.Models.Customer as global::WebApplication1.Models.CustomerSingle specified by key from an entity set
         /// </summary>
-        /// <param name="source">source entity set</param>
+        /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::WebApplication1.Models.CustomerSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Customer> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        public static global::WebApplication1.Models.CustomerSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Customer> _source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
-            return new global::WebApplication1.Models.CustomerSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::WebApplication1.Models.CustomerSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
         /// Get an entity of type global::WebApplication1.Models.Customer as global::WebApplication1.Models.CustomerSingle specified by key from an entity set
         /// </summary>
-        /// <param name="source">source entity set</param>
+        /// <param name="_source">source entity set</param>
         /// <param name="customerID">The value of customerID</param>
-        public static global::WebApplication1.Models.CustomerSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Customer> source,
+        public static global::WebApplication1.Models.CustomerSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Customer> _source,
             string customerID)
         {
             global::System.Collections.Generic.Dictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "CustomerID", customerID }
             };
-            return new global::WebApplication1.Models.CustomerSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::WebApplication1.Models.CustomerSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
         /// Get an entity of type global::WebApplication1.Models.Order as global::WebApplication1.Models.OrderSingle specified by key from an entity set
         /// </summary>
-        /// <param name="source">source entity set</param>
+        /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::WebApplication1.Models.OrderSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Order> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        public static global::WebApplication1.Models.OrderSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Order> _source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
-            return new global::WebApplication1.Models.OrderSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::WebApplication1.Models.OrderSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
         /// Get an entity of type global::WebApplication1.Models.Order as global::WebApplication1.Models.OrderSingle specified by key from an entity set
         /// </summary>
-        /// <param name="source">source entity set</param>
+        /// <param name="_source">source entity set</param>
         /// <param name="iD">The value of iD</param>
-        public static global::WebApplication1.Models.OrderSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Order> source,
+        public static global::WebApplication1.Models.OrderSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Order> _source,
             int iD)
         {
             global::System.Collections.Generic.Dictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "ID", iD }
             };
-            return new global::WebApplication1.Models.OrderSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::WebApplication1.Models.OrderSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
         /// Cast an entity of type global::WebApplication1.Models.BaseDocument to its derived type global::WebApplication1.Models.Order
         /// </summary>
-        /// <param name="source">source entity</param>
-        public static global::WebApplication1.Models.OrderSingle CastToOrder(this global::Microsoft.OData.Client.DataServiceQuerySingle<global::WebApplication1.Models.BaseDocument> source)
+        /// <param name="_source">source entity</param>
+        public static global::WebApplication1.Models.OrderSingle CastToOrder(this global::Microsoft.OData.Client.DataServiceQuerySingle<global::WebApplication1.Models.BaseDocument> _source)
         {
-            global::Microsoft.OData.Client.DataServiceQuerySingle<global::WebApplication1.Models.Order> query = source.CastTo<global::WebApplication1.Models.Order>();
-            return new global::WebApplication1.Models.OrderSingle(source.Context, query.GetPath(null));
+            global::Microsoft.OData.Client.DataServiceQuerySingle<global::WebApplication1.Models.Order> query = _source.CastTo<global::WebApplication1.Models.Order>();
+            return new global::WebApplication1.Models.OrderSingle(_source.Context, query.GetPath(null));
         }
         /// <summary>
         /// Get an entity of type global::WebApplication1.Models.Contract as global::WebApplication1.Models.ContractSingle specified by key from an entity set
         /// </summary>
-        /// <param name="source">source entity set</param>
+        /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::WebApplication1.Models.ContractSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Contract> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        public static global::WebApplication1.Models.ContractSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Contract> _source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
-            return new global::WebApplication1.Models.ContractSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::WebApplication1.Models.ContractSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
         /// Get an entity of type global::WebApplication1.Models.Contract as global::WebApplication1.Models.ContractSingle specified by key from an entity set
         /// </summary>
-        /// <param name="source">source entity set</param>
+        /// <param name="_source">source entity set</param>
         /// <param name="iD">The value of iD</param>
-        public static global::WebApplication1.Models.ContractSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Contract> source,
+        public static global::WebApplication1.Models.ContractSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Contract> _source,
             int iD)
         {
             global::System.Collections.Generic.Dictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "ID", iD }
             };
-            return new global::WebApplication1.Models.ContractSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::WebApplication1.Models.ContractSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
         /// Cast an entity of type global::WebApplication1.Models.BaseDocument to its derived type global::WebApplication1.Models.Contract
         /// </summary>
-        /// <param name="source">source entity</param>
-        public static global::WebApplication1.Models.ContractSingle CastToContract(this global::Microsoft.OData.Client.DataServiceQuerySingle<global::WebApplication1.Models.BaseDocument> source)
+        /// <param name="_source">source entity</param>
+        public static global::WebApplication1.Models.ContractSingle CastToContract(this global::Microsoft.OData.Client.DataServiceQuerySingle<global::WebApplication1.Models.BaseDocument> _source)
         {
-            global::Microsoft.OData.Client.DataServiceQuerySingle<global::WebApplication1.Models.Contract> query = source.CastTo<global::WebApplication1.Models.Contract>();
-            return new global::WebApplication1.Models.ContractSingle(source.Context, query.GetPath(null));
+            global::Microsoft.OData.Client.DataServiceQuerySingle<global::WebApplication1.Models.Contract> query = _source.CastTo<global::WebApplication1.Models.Contract>();
+            return new global::WebApplication1.Models.ContractSingle(_source.Context, query.GetPath(null));
         }
         /// <summary>
         /// Get an entity of type global::WebApplication1.Models.Product as global::WebApplication1.Models.ProductSingle specified by key from an entity set
         /// </summary>
-        /// <param name="source">source entity set</param>
+        /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::WebApplication1.Models.ProductSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Product> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        public static global::WebApplication1.Models.ProductSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Product> _source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
-            return new global::WebApplication1.Models.ProductSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::WebApplication1.Models.ProductSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
         /// Get an entity of type global::WebApplication1.Models.Product as global::WebApplication1.Models.ProductSingle specified by key from an entity set
         /// </summary>
-        /// <param name="source">source entity set</param>
+        /// <param name="_source">source entity set</param>
         /// <param name="productID">The value of productID</param>
-        public static global::WebApplication1.Models.ProductSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Product> source,
+        public static global::WebApplication1.Models.ProductSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Product> _source,
             int productID)
         {
             global::System.Collections.Generic.Dictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "ProductID", productID }
             };
-            return new global::WebApplication1.Models.ProductSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::WebApplication1.Models.ProductSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
         /// Get an entity of type global::WebApplication1.Models.OrderDetail as global::WebApplication1.Models.OrderDetailSingle specified by key from an entity set
         /// </summary>
-        /// <param name="source">source entity set</param>
+        /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::WebApplication1.Models.OrderDetailSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.OrderDetail> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        public static global::WebApplication1.Models.OrderDetailSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.OrderDetail> _source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
-            return new global::WebApplication1.Models.OrderDetailSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::WebApplication1.Models.OrderDetailSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
         /// Get an entity of type global::WebApplication1.Models.OrderDetail as global::WebApplication1.Models.OrderDetailSingle specified by key from an entity set
         /// </summary>
-        /// <param name="source">source entity set</param>
+        /// <param name="_source">source entity set</param>
         /// <param name="orderDetailID">The value of orderDetailID</param>
-        public static global::WebApplication1.Models.OrderDetailSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.OrderDetail> source,
+        public static global::WebApplication1.Models.OrderDetailSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.OrderDetail> _source,
             int orderDetailID)
         {
             global::System.Collections.Generic.Dictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "OrderDetailID", orderDetailID }
             };
-            return new global::WebApplication1.Models.OrderDetailSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::WebApplication1.Models.OrderDetailSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
     }
 }
@@ -1327,7 +1236,7 @@ namespace Default
         /// <summary>
         /// Initialize a new Container object.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         public Container(global::System.Uri serviceRoot) : 
                 base(serviceRoot, global::Microsoft.OData.Client.ODataProtocolVersion.V4)
         {
@@ -1342,167 +1251,167 @@ namespace Default
         /// in Visual Studio is different from the one indicated in the
         /// server schema, use type-mappers to map between the two.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
             return clientType.FullName;
         }
         /// <summary>
-        /// There are no comments for Documents in the schema.
+        /// There are no comments for BaseDocument in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> Documents
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> BaseDocument
         {
             get
             {
-                if ((this._Documents == null))
+                if ((this._BaseDocument == null))
                 {
-                    this._Documents = base.CreateQuery<global::WebApplication1.Models.BaseDocument>("Documents");
+                    this._BaseDocument = base.CreateQuery<global::WebApplication1.Models.BaseDocument>("BaseDocument");
                 }
-                return this._Documents;
+                return this._BaseDocument;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> _Documents;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.BaseDocument> _BaseDocument;
         /// <summary>
-        /// There are no comments for Customers in the schema.
+        /// There are no comments for Customer in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Customer> Customers
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Customer> Customer
         {
             get
             {
-                if ((this._Customers == null))
+                if ((this._Customer == null))
                 {
-                    this._Customers = base.CreateQuery<global::WebApplication1.Models.Customer>("Customers");
+                    this._Customer = base.CreateQuery<global::WebApplication1.Models.Customer>("Customer");
                 }
-                return this._Customers;
+                return this._Customer;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Customer> _Customers;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Customer> _Customer;
         /// <summary>
-        /// There are no comments for Orders in the schema.
+        /// There are no comments for Order in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Order> Orders
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Order> Order
         {
             get
             {
-                if ((this._Orders == null))
+                if ((this._Order == null))
                 {
-                    this._Orders = base.CreateQuery<global::WebApplication1.Models.Order>("Orders");
+                    this._Order = base.CreateQuery<global::WebApplication1.Models.Order>("Order");
                 }
-                return this._Orders;
+                return this._Order;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Order> _Orders;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Order> _Order;
         /// <summary>
-        /// There are no comments for Contracts in the schema.
+        /// There are no comments for Contract in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Contract> Contracts
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Contract> Contract
         {
             get
             {
-                if ((this._Contracts == null))
+                if ((this._Contract == null))
                 {
-                    this._Contracts = base.CreateQuery<global::WebApplication1.Models.Contract>("Contracts");
+                    this._Contract = base.CreateQuery<global::WebApplication1.Models.Contract>("Contract");
                 }
-                return this._Contracts;
+                return this._Contract;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Contract> _Contracts;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Contract> _Contract;
         /// <summary>
-        /// There are no comments for Products in the schema.
+        /// There are no comments for Product in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Product> Products
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Product> Product
         {
             get
             {
-                if ((this._Products == null))
+                if ((this._Product == null))
                 {
-                    this._Products = base.CreateQuery<global::WebApplication1.Models.Product>("Products");
+                    this._Product = base.CreateQuery<global::WebApplication1.Models.Product>("Product");
                 }
-                return this._Products;
+                return this._Product;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Product> _Products;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.Product> _Product;
         /// <summary>
-        /// There are no comments for OrderDetails in the schema.
+        /// There are no comments for OrderDetail in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.OrderDetail> OrderDetails
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.OrderDetail> OrderDetail
         {
             get
             {
-                if ((this._OrderDetails == null))
+                if ((this._OrderDetail == null))
                 {
-                    this._OrderDetails = base.CreateQuery<global::WebApplication1.Models.OrderDetail>("OrderDetails");
+                    this._OrderDetail = base.CreateQuery<global::WebApplication1.Models.OrderDetail>("OrderDetail");
                 }
-                return this._OrderDetails;
+                return this._OrderDetail;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.OrderDetail> _OrderDetails;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::WebApplication1.Models.OrderDetail> _OrderDetail;
         /// <summary>
-        /// There are no comments for Documents in the schema.
+        /// There are no comments for BaseDocument in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public void AddToDocuments(global::WebApplication1.Models.BaseDocument baseDocument)
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public void AddToBaseDocument(global::WebApplication1.Models.BaseDocument baseDocument)
         {
-            base.AddObject("Documents", baseDocument);
+            base.AddObject("BaseDocument", baseDocument);
         }
         /// <summary>
-        /// There are no comments for Customers in the schema.
+        /// There are no comments for Customer in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public void AddToCustomers(global::WebApplication1.Models.Customer customer)
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public void AddToCustomer(global::WebApplication1.Models.Customer customer)
         {
-            base.AddObject("Customers", customer);
+            base.AddObject("Customer", customer);
         }
         /// <summary>
-        /// There are no comments for Orders in the schema.
+        /// There are no comments for Order in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public void AddToOrders(global::WebApplication1.Models.Order order)
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public void AddToOrder(global::WebApplication1.Models.Order order)
         {
-            base.AddObject("Orders", order);
+            base.AddObject("Order", order);
         }
         /// <summary>
-        /// There are no comments for Contracts in the schema.
+        /// There are no comments for Contract in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public void AddToContracts(global::WebApplication1.Models.Contract contract)
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public void AddToContract(global::WebApplication1.Models.Contract contract)
         {
-            base.AddObject("Contracts", contract);
+            base.AddObject("Contract", contract);
         }
         /// <summary>
-        /// There are no comments for Products in the schema.
+        /// There are no comments for Product in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public void AddToProducts(global::WebApplication1.Models.Product product)
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public void AddToProduct(global::WebApplication1.Models.Product product)
         {
-            base.AddObject("Products", product);
+            base.AddObject("Product", product);
         }
         /// <summary>
-        /// There are no comments for OrderDetails in the schema.
+        /// There are no comments for OrderDetail in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public void AddToOrderDetails(global::WebApplication1.Models.OrderDetail orderDetail)
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
+        public void AddToOrderDetail(global::WebApplication1.Models.OrderDetail orderDetail)
         {
-            base.AddObject("OrderDetails", orderDetail);
+            base.AddObject("OrderDetail", orderDetail);
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
         private abstract class GeneratedEdmModel
         {
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
             private static global::Microsoft.OData.Edm.IEdmModel ParsedModel = LoadModelFromString();
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
             private const string Edmx = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
   <edmx:DataServices>
     <Schema Namespace=""WebApplication1.Models"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
@@ -1567,34 +1476,34 @@ namespace Default
         <ReturnType Type=""Edm.Decimal"" Nullable=""false"" Scale=""Variable"" />
       </Function>
       <EntityContainer Name=""Container"">
-        <EntitySet Name=""Documents"" EntityType=""WebApplication1.Models.BaseDocument"">
-          <NavigationPropertyBinding Path=""LinkedDocuments"" Target=""Documents"" />
-          <NavigationPropertyBinding Path=""ParentDocument"" Target=""Documents"" />
-          <NavigationPropertyBinding Path=""WebApplication1.Models.Order/Customer"" Target=""Customers"" />
-          <NavigationPropertyBinding Path=""WebApplication1.Models.Order/OrderDetails"" Target=""OrderDetails"" />
-          <NavigationPropertyBinding Path=""WebApplication1.Models.Contract/Customer"" Target=""Customers"" />
+        <EntitySet Name=""BaseDocument"" EntityType=""WebApplication1.Models.BaseDocument"">
+          <NavigationPropertyBinding Path=""LinkedDocuments"" Target=""BaseDocument"" />
+          <NavigationPropertyBinding Path=""ParentDocument"" Target=""BaseDocument"" />
+          <NavigationPropertyBinding Path=""WebApplication1.Models.Order/Customer"" Target=""Customer"" />
+          <NavigationPropertyBinding Path=""WebApplication1.Models.Order/OrderDetails"" Target=""OrderDetail"" />
+          <NavigationPropertyBinding Path=""WebApplication1.Models.Contract/Customer"" Target=""Customer"" />
         </EntitySet>
-        <EntitySet Name=""Customers"" EntityType=""WebApplication1.Models.Customer"">
-          <NavigationPropertyBinding Path=""Orders"" Target=""Orders"" />
-          <NavigationPropertyBinding Path=""Contracts"" Target=""Contracts"" />
+        <EntitySet Name=""Customer"" EntityType=""WebApplication1.Models.Customer"">
+          <NavigationPropertyBinding Path=""Orders"" Target=""Order"" />
+          <NavigationPropertyBinding Path=""Contracts"" Target=""Contract"" />
         </EntitySet>
-        <EntitySet Name=""Orders"" EntityType=""WebApplication1.Models.Order"">
-          <NavigationPropertyBinding Path=""LinkedDocuments"" Target=""Documents"" />
-          <NavigationPropertyBinding Path=""ParentDocument"" Target=""Documents"" />
-          <NavigationPropertyBinding Path=""Customer"" Target=""Customers"" />
-          <NavigationPropertyBinding Path=""OrderDetails"" Target=""OrderDetails"" />
+        <EntitySet Name=""Order"" EntityType=""WebApplication1.Models.Order"">
+          <NavigationPropertyBinding Path=""LinkedDocuments"" Target=""BaseDocument"" />
+          <NavigationPropertyBinding Path=""ParentDocument"" Target=""BaseDocument"" />
+          <NavigationPropertyBinding Path=""Customer"" Target=""Customer"" />
+          <NavigationPropertyBinding Path=""OrderDetails"" Target=""OrderDetail"" />
         </EntitySet>
-        <EntitySet Name=""Contracts"" EntityType=""WebApplication1.Models.Contract"">
-          <NavigationPropertyBinding Path=""LinkedDocuments"" Target=""Documents"" />
-          <NavigationPropertyBinding Path=""ParentDocument"" Target=""Documents"" />
-          <NavigationPropertyBinding Path=""Customer"" Target=""Customers"" />
+        <EntitySet Name=""Contract"" EntityType=""WebApplication1.Models.Contract"">
+          <NavigationPropertyBinding Path=""LinkedDocuments"" Target=""BaseDocument"" />
+          <NavigationPropertyBinding Path=""ParentDocument"" Target=""BaseDocument"" />
+          <NavigationPropertyBinding Path=""Customer"" Target=""Customer"" />
         </EntitySet>
-        <EntitySet Name=""Products"" EntityType=""WebApplication1.Models.Product"">
-          <NavigationPropertyBinding Path=""OrderDetails"" Target=""OrderDetails"" />
+        <EntitySet Name=""Product"" EntityType=""WebApplication1.Models.Product"">
+          <NavigationPropertyBinding Path=""OrderDetails"" Target=""OrderDetail"" />
         </EntitySet>
-        <EntitySet Name=""OrderDetails"" EntityType=""WebApplication1.Models.OrderDetail"">
-          <NavigationPropertyBinding Path=""Order"" Target=""Orders"" />
-          <NavigationPropertyBinding Path=""Product"" Target=""Products"" />
+        <EntitySet Name=""OrderDetail"" EntityType=""WebApplication1.Models.OrderDetail"">
+          <NavigationPropertyBinding Path=""Order"" Target=""Order"" />
+          <NavigationPropertyBinding Path=""Product"" Target=""Product"" />
         </EntitySet>
         <ActionImport Name=""InitializeDatabase"" Action=""Default.InitializeDatabase"" />
         <FunctionImport Name=""TotalSalesByYear"" Function=""Default.TotalSalesByYear"" IncludeInServiceDocument=""true"" />
@@ -1602,25 +1511,39 @@ namespace Default
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>";
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
             public static global::Microsoft.OData.Edm.IEdmModel GetInstance()
             {
                 return ParsedModel;
             }
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
             private static global::Microsoft.OData.Edm.IEdmModel LoadModelFromString()
             {
                 global::System.Xml.XmlReader reader = CreateXmlReader(Edmx);
                 try
                 {
-                    return global::Microsoft.OData.Edm.Csdl.CsdlReader.Parse(reader);
+                    global::System.Collections.Generic.IEnumerable<global::Microsoft.OData.Edm.Validation.EdmError> errors;
+                    global::Microsoft.OData.Edm.IEdmModel edmModel;
+                    
+                    if (!global::Microsoft.OData.Edm.Csdl.CsdlReader.TryParse(reader, false, out edmModel, out errors))
+                    {
+                        global::System.Text.StringBuilder errorMessages = new global::System.Text.StringBuilder();
+                        foreach (var error in errors)
+                        {
+                            errorMessages.Append(error.ErrorMessage);
+                            errorMessages.Append("; ");
+                        }
+                        throw new global::System.InvalidOperationException(errorMessages.ToString());
+                    }
+
+                    return edmModel;
                 }
                 finally
                 {
                     ((global::System.IDisposable)(reader)).Dispose();
                 }
             }
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.6.0")]
             private static global::System.Xml.XmlReader CreateXmlReader(string edmxToParse)
             {
                 return global::System.Xml.XmlReader.Create(new global::System.IO.StringReader(edmxToParse));

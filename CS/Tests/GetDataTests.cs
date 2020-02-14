@@ -15,7 +15,7 @@ namespace Tests {
         [Test]
         public void SelectSimple() {
             Container container = GetODataContainer();
-            var customers = container.Customers.ToList();
+            var customers = container.Customer.ToList();
 
             Assert.AreEqual(4, customers.Count);
             Assert.True(customers.Exists(c => c.CustomerID == "BSBEV" && c.CompanyName == "B's Beverages"));
@@ -27,14 +27,14 @@ namespace Tests {
         [Test]
         public void GetCount() {
             Container container = GetODataContainer();
-            int count = container.Customers.Count();
+            int count = container.Customer.Count();
             Assert.AreEqual(4, count);
         }
 
         [Test]
         public void FilterAndSort() {
             Container container = GetODataContainer();
-            var customers = container.Customers
+            var customers = container.Customer
                 .Where(c => string.Compare(c.CustomerID, "C") >= 0)
                 .OrderByDescending(c => c.CompanyName)
                 .ToList();
@@ -48,7 +48,7 @@ namespace Tests {
         [Test]
         public void SkipAndTake() {
             Container container = GetODataContainer();
-            var products = container.Products.OrderBy(t => t.UnitPrice)
+            var products = container.Product.OrderBy(t => t.UnitPrice)
                 .Skip(1).Take(2)
                 .ToList();
 
@@ -60,7 +60,7 @@ namespace Tests {
         [Test]
         public void FilterByNull() {
             Container container = GetODataContainer();
-            var orders = container.Orders
+            var orders = container.Order
                 .Where(o => o.Customer == null)
                 .ToList();
             Assert.AreEqual(1, orders.Count);
@@ -69,7 +69,7 @@ namespace Tests {
         [Test]
         public void FilterByNotNull() {
             Container container = GetODataContainer();
-            var orders = container.Orders
+            var orders = container.Order
                 .Where(o => o.Customer != null)
                 .ToList();
             Assert.AreEqual(4, orders.Count);
@@ -78,7 +78,7 @@ namespace Tests {
         [Test]
         public void FilterByEnum() {
             Container container = GetODataContainer();
-            var orders = container.Orders
+            var orders = container.Order
                 .Where(o => o.OrderStatus == OrderStatus.New)
                 .ToList();
             Assert.AreEqual(2, orders.Count);
@@ -87,7 +87,7 @@ namespace Tests {
         [Test]
         public void Expand() {
             Container container = GetODataContainer();
-            var orders = container.Orders
+            var orders = container.Order
                 .Expand(o => o.Customer)
                 .Expand("OrderDetails($expand=Product)")
                 .ToList();
@@ -111,7 +111,7 @@ namespace Tests {
         [Test]
         public void FilterAndSortWithExpand() {
             Container container = GetODataContainer();
-            var orders = container.Orders
+            var orders = container.Order
                 .Expand(o => o.Customer)
                 .Expand("OrderDetails($expand=Product)")
                 .Where(o => o.Customer.CustomerID != "OCEAN")
@@ -134,7 +134,7 @@ namespace Tests {
         [Test]
         public void FilterByChildCollections() {
             Container container = GetODataContainer();
-            var orders = container.Orders
+            var orders = container.Order
                 .Expand("OrderDetails($expand=Product)")
                 .Where(o => o.OrderDetails.Any(t => t.Product.ProductName == "Queso Cabrales"))
                 .ToList();
@@ -150,7 +150,7 @@ namespace Tests {
             DateTimeOffset startDate = new DateTimeOffset(new DateTime(2018, 03, 01));
             DateTimeOffset endDate = new DateTimeOffset(new DateTime(2018, 06, 01));
             Container container = GetODataContainer();
-            var orders = container.Orders
+            var orders = container.Order
                 .Where(o => o.Date > startDate && o.Date <= endDate)
                 .ToList();
 
@@ -164,7 +164,7 @@ namespace Tests {
         [Test]
         public void FilterByDateTimePart() {
             Container container = GetODataContainer();
-            var orders = container.Orders
+            var orders = container.Order
                 .Where(o => o.Date.Value.Year == 2018 && (o.Date.Value.Month == 3 || o.Date.Value.Month == 6))
                 .ToList();
             Assert.AreEqual(3, orders.Count);
@@ -173,7 +173,7 @@ namespace Tests {
         [Test]
         public void SelectBlobValues() {
             Container container = GetODataContainer();
-            var product = container.Products.Where(t => t.ProductName == "Vegie-spread").First();
+            var product = container.Product.Where(t => t.ProductName == "Vegie-spread").First();
 
             Assert.IsNotNull(product.Picture);
             Assert.AreEqual(10, product.Picture.Length);
@@ -185,8 +185,8 @@ namespace Tests {
         [Test]
         public void SelectWithProjection() {
             Container container = GetODataContainer();
-            var orders = container.Orders.Expand(t => t.Customer).OrderBy(t => t.Date).ToList();
-            var projected = container.Orders
+            var orders = container.Order.Expand(t => t.Customer).OrderBy(t => t.Date).ToList();
+            var projected = container.Order
                 .OrderBy(t => t.Date)
                 .Select(t => new {
                     OrderID = t.ID,
@@ -206,8 +206,8 @@ namespace Tests {
         [Test]
         public void SelectWithProjectionAndFunctions() {
             Container container = GetODataContainer();
-            var orders = container.Orders.Expand(t => t.Customer).OrderBy(t => t.Date).ToList();
-            var projected = container.Orders
+            var orders = container.Order.Expand(t => t.Customer).OrderBy(t => t.Date).ToList();
+            var projected = container.Order
                 .OrderBy(t => t.Date)
                 .Select(t => new {
                     Year = t.Date.Value.Year,
@@ -225,21 +225,21 @@ namespace Tests {
         [Test]
         public void ResourceReferenceProperty() {
             Container container = GetODataContainer();
-            int orderId = container.Orders
+            int orderId = container.Order
                 .Where(t => t.Date == new DateTimeOffset(new DateTime(2018, 06, 01)))
                 .First().ID;
 
-            var details = container.Orders.ByKey(orderId).OrderDetails.Expand(t => t.Product).ToList();
+            var details = container.Order.ByKey(orderId).OrderDetails.Expand(t => t.Product).ToList();
             Assert.AreEqual(3, details.Count);
         }
 
         [Test]
         public void InheritanceFilterByType() {
             Container container = GetODataContainer();
-            var documents = container.Documents.ToList();
-            var orders = container.Documents.Where(t => t is Order).ToList();
-            var contracts = container.Documents.Where(t => t is Contract).ToList();
-            var notOrders = container.Documents.Where(t => !(t is Order)).ToList();
+            var documents = container.BaseDocument.ToList();
+            var orders = container.BaseDocument.Where(t => t is Order).ToList();
+            var contracts = container.BaseDocument.Where(t => t is Contract).ToList();
+            var notOrders = container.BaseDocument.Where(t => !(t is Order)).ToList();
             Assert.AreEqual(5, orders.Count);
             Assert.AreEqual(3, contracts.Count);
             Assert.AreEqual(8, documents.Count);
@@ -249,19 +249,19 @@ namespace Tests {
         [Test]
         public void InheritanceCast() {
             Container container = GetODataContainer();
-            var contracts = container.Documents.Where(t => (t as Contract).Number != "2018-0003").ToList();
+            var contracts = container.BaseDocument.Where(t => (t as Contract).Number != "2018-0003").ToList();
             Assert.AreEqual(2, contracts.Count);
-            contracts = container.Documents.Where(t => (t as Contract).Number == "2018-0003").ToList();
+            contracts = container.BaseDocument.Where(t => (t as Contract).Number == "2018-0003").ToList();
             Assert.AreEqual(1, contracts.Count);
         }
 
         [Test]
         public void SelectInheritedReference() {
             Container container = GetODataContainer();
-            int orderId = container.Orders
+            int orderId = container.Order
                 .Where(t => t.Date == new DateTimeOffset(new DateTime(2018, 01, 22, 10, 00, 01)))
                 .First().ID;
-            BaseDocument parentDoc = container.Orders.ByKey(orderId).ParentDocument.GetValue();
+            BaseDocument parentDoc = container.Order.ByKey(orderId).ParentDocument.GetValue();
             Assert.IsNotNull(parentDoc);
             Assert.AreEqual(typeof(Contract), parentDoc.GetType());
             Assert.AreEqual("2018-0001", ((Contract)parentDoc).Number);
@@ -270,7 +270,7 @@ namespace Tests {
         [Test]
         public void ExpandInheritedCollection() {
             Container container = GetODataContainer();
-            Contract contract = container.Contracts.Expand(c => c.LinkedDocuments)
+            Contract contract = container.Contract.Expand(c => c.LinkedDocuments)
                 .Where(t => t.Number == "2018-0001")
                 .First();
             Assert.AreEqual(3, contract.LinkedDocuments.Count);
@@ -283,7 +283,7 @@ namespace Tests {
         [Test]
         public void CrossFilterByChildCollection() {
             Container container = GetODataContainer();
-            var contracts = container.Contracts.Where(c => c.LinkedDocuments.Any(d => d.Date <= c.Date)).ToList();
+            var contracts = container.Contract.Where(c => c.LinkedDocuments.Any(d => d.Date <= c.Date)).ToList();
             Assert.AreEqual(1, contracts.Count);
             Assert.AreEqual("2018-0001", contracts[0].Number);
         }
@@ -291,10 +291,10 @@ namespace Tests {
         [Test]
         public void T727833() {
             Container container = GetODataContainer();
-            var orderDetail = container.OrderDetails.Expand("Product").Expand("Order($expand=Customer)").ToList().First(t => t.Order.Customer != null);
+            var orderDetail = container.OrderDetail.Expand("Product").Expand("Order($expand=Customer)").ToList().First(t => t.Order.Customer != null);
             int orderId = orderDetail.Order.ID;
             int productId = orderDetail.Product.ProductID;
-            var orders = container.Orders
+            var orders = container.Order
                 .Expand("Customer")
                 .Expand("OrderDetails($expand=Product)")
                 .Where(o => o.OrderDetails.Any(p => p.Product.ProductID == productId) && o.ID == orderId)

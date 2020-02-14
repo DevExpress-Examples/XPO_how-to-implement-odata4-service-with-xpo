@@ -13,7 +13,7 @@ using Microsoft.AspNet.OData.Routing;
 
 namespace WebApplication1.Controllers {
 
-    public class DocumentsController : ODataController {
+    public class BaseDocumentController : ODataController {
 
         private UnitOfWork Session;
 
