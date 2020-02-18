@@ -28,7 +28,7 @@ Steps to implement:
     }
 	```
 
-6. Modify the *WebApiConfig.cs* file: create an ODataModelBuilder instance and register an EntitySet for each persistent class:
+6. Modify the *WebApiConfig.cs* file: create an ODataModelBuilder instance and register an EntitySet for each persistent class (refer to the [WebApiConfig.cs](CS/ODataService/App_Start/WebApiConfig.cs) file in this repository to learn how to automatically register all persistent classes):
 
 	```cs
 	public static void Register(HttpConfiguration config) {
