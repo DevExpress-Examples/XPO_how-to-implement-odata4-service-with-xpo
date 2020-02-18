@@ -12,7 +12,7 @@ using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Routing;
 
 namespace WebApplication1.Controllers {
-    public class ContractsController : ODataController {
+    public class ContractController : ODataController {
 
         private UnitOfWork Session;
 

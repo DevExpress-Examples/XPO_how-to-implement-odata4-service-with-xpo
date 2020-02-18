@@ -12,7 +12,7 @@ using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Routing;
 
 namespace WebApplication1.Controllers {
-    public class OrdersController : ODataController {
+    public class OrderController : ODataController {
 
         private UnitOfWork Session;
 
@@ -111,7 +111,7 @@ namespace WebApplication1.Controllers {
 
         [HttpPost]
         [HttpPut]
-        [ODataRoute("Orders({key})/OrderDetails")]
+        [ODataRoute("Order({key})/OrderDetails")]
         public IHttpActionResult AddToOrderDetails([FromODataUri] int key, OrderDetail orderDetail) {
             using(UnitOfWork uow = ConnectionHelper.CreateSession()) {
                 Order order = uow.GetObjectByKey<Order>(key);

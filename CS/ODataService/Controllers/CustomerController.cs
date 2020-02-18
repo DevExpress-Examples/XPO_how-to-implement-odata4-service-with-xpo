@@ -7,7 +7,7 @@ using ODataService.Helpers;
 using Microsoft.AspNet.OData;
 
 namespace WebApplication1.Controllers {
-    public class CustomersController : ODataController {
+    public class CustomerController : ODataController {
 
         private UnitOfWork Session;
 
