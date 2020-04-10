@@ -7,6 +7,8 @@ using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNet.OData.Builder;
 using DevExpress.Xpo.Metadata;
 using ODataService.Helpers;
+using DevExpress.Xpo;
+using DevExpress.Data.Filtering;
 
 namespace WebApplication1
 {
@@ -74,7 +76,20 @@ namespace WebApplication1
                 EntitySetConfiguration baseClassEntitySetConfig = CreateEntitySet(classInfo.PersistentBaseClass, builder);
                 entityTypeConfig.DerivesFrom(baseClassEntitySetConfig.EntityType);
             } else {
-                entityTypeConfig.HasKey(classInfo.ClassType.GetProperty(classInfo.KeyProperty.Name));
+                if(classInfo.KeyProperty is ReflectionFieldInfo) {
+                    foreach(XPMemberInfo mi in classInfo.Members) {
+                        if(mi.IsAliased) {
+                            string aliasedExpr = ((PersistentAliasAttribute)mi.GetAttributeInfo(typeof(PersistentAliasAttribute))).AliasExpression;
+                            var aliasedCriteria = CriteriaOperator.Parse(aliasedExpr) as OperandProperty;
+                            if(!ReferenceEquals(null, aliasedCriteria) && aliasedCriteria.PropertyName == classInfo.KeyProperty.Name) {
+                                entityTypeConfig.HasKey(classInfo.ClassType.GetProperty(mi.Name));
+                                break;
+                            }
+                        }
+                    }
+                } else {
+                    entityTypeConfig.HasKey(classInfo.ClassType.GetProperty(classInfo.KeyProperty.Name));
+                }
             }
             return entitySetConfig;
         }
