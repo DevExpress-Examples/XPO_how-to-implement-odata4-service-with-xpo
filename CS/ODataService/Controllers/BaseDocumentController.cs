@@ -20,13 +20,13 @@ namespace WebApplication1.Controllers {
         [EnableQuery]
         public IQueryable<BaseDocument> Get() {
             Session = ConnectionHelper.CreateSession();
-            return Session.Query<BaseDocument>().AsWrappedQuery();
+            return Session.Query<BaseDocument>();
         }
 
         [EnableQuery]
         public SingleResult<BaseDocument> Get([FromODataUri] int key) {
             Session = ConnectionHelper.CreateSession();
-            var result = Session.Query<BaseDocument>().AsWrappedQuery().Where(t => t.ID == key);
+            var result = Session.Query<BaseDocument>().Where(t => t.ID == key);
             return SingleResult.Create(result);
         }
 

@@ -16,13 +16,13 @@ namespace WebApplication1.Controllers {
         [EnableQuery]
         public IQueryable<Product> Get() {
             Session = ConnectionHelper.CreateSession();
-            return Session.Query<Product>().AsWrappedQuery();
+            return Session.Query<Product>();
         }
 
         [EnableQuery]
         public SingleResult<Product> Get([FromODataUri] int key) {
             Session = ConnectionHelper.CreateSession();
-            var result = Session.Query<Product>().AsWrappedQuery().Where(t => t.ProductID == key);
+            var result = Session.Query<Product>().Where(t => t.ProductID == key);
             return SingleResult.Create(result);
         }
 
