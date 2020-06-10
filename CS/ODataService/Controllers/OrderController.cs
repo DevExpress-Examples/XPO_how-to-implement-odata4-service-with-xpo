@@ -19,40 +19,40 @@ namespace WebApplication1.Controllers {
         [EnableQuery]
         public IQueryable<Order> Get() {
             Session = ConnectionHelper.CreateSession();
-            return Session.Query<Order>().AsWrappedQuery();
+            return Session.Query<Order>();
         }
 
         [EnableQuery]
         public SingleResult<Order> Get([FromODataUri] int key) {
             Session = ConnectionHelper.CreateSession();
-            var result = Session.Query<Order>().AsWrappedQuery().Where(t => t.ID == key);
+            var result = Session.Query<Order>().Where(t => t.ID == key);
             return SingleResult.Create(result);
         }
 
         [EnableQuery]
         public SingleResult<Customer> GetCustomer([FromODataUri] int key) {
             Session = ConnectionHelper.CreateSession();
-            var result = Session.Query<Order>().AsWrappedQuery().Where(m => m.ID == key).Select(m => m.Customer);
+            var result = Session.Query<Order>().Where(m => m.ID == key).Select(m => m.Customer);
             return SingleResult.Create(result);
         }
 
         [EnableQuery]
         public IQueryable<OrderDetail> GetOrderDetails([FromODataUri] int key) {
             Session = ConnectionHelper.CreateSession();
-            return Session.Query<OrderDetail>().AsWrappedQuery().Where(t => t.Order.ID == key);
+            return Session.Query<OrderDetail>().Where(t => t.Order.ID == key);
         }
 
         [EnableQuery]
         public SingleResult<BaseDocument> GetParentDocument([FromODataUri] int key) {
             Session = ConnectionHelper.CreateSession();
-            var result = Session.Query<Order>().AsWrappedQuery().Where(m => m.ID == key).Select(m => m.ParentDocument);
+            var result = Session.Query<Order>().Where(m => m.ID == key).Select(m => m.ParentDocument);
             return SingleResult.Create(result);
         }
 
         [EnableQuery]
         public IQueryable<BaseDocument> GetLinkedDocuments([FromODataUri] int key) {
             Session = ConnectionHelper.CreateSession();
-            return Session.Query<Order>().AsWrappedQuery().Where(m => m.ID == key).SelectMany(t => t.LinkedDocuments);
+            return Session.Query<Order>().Where(m => m.ID == key).SelectMany(t => t.LinkedDocuments);
         }
 
         [HttpPost]

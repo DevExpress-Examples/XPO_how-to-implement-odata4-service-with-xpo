@@ -14,20 +14,20 @@ namespace WebApplication1.Controllers {
         [EnableQuery]
         public IQueryable<Customer> Get() {
             Session = ConnectionHelper.CreateSession();
-            return Session.Query<Customer>().AsWrappedQuery();
+            return Session.Query<Customer>();
         }
 
         [EnableQuery]
         public SingleResult<Customer> Get([FromODataUri] string key) {
             Session = ConnectionHelper.CreateSession();
-            var result = Session.Query<Customer>().AsWrappedQuery().Where(t => t.CustomerID == key);
+            var result = Session.Query<Customer>().Where(t => t.CustomerID == key);
             return SingleResult.Create(result);
         }
 
         [EnableQuery]
         public IQueryable<Order> GetOrders([FromODataUri] string key) {
             Session = ConnectionHelper.CreateSession();
-            return Session.Query<Customer>().AsWrappedQuery().Where(m => m.CustomerID == key).SelectMany(m => m.Orders);
+            return Session.Query<Customer>().Where(m => m.CustomerID == key).SelectMany(m => m.Orders);
         }
 
 
