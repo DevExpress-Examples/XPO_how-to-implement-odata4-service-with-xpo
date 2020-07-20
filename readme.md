@@ -13,53 +13,53 @@ Steps to implement:
 4. Add files from the **CS\OdataService\Helpers** folder in this example to your project ([Quick Tip: Add files to Visual Studio projects the easy way](https://blogs.msdn.microsoft.com/davidklinems/2007/12/18/quick-tip-add-files-to-visual-studio-projects-the-easy-way/)).
 5. Modify the `Application_Start()` method declared in the *Global.asax* file: register the model body validator class and initialize the [Data Access Layer](https://docs.devexpress.com/CoreLibraries/2121/devexpress-orm-tool/feature-center/connecting-to-a-data-store/data-access-layer).
 
-	```cs
-	protected void Application_Start() {
-		GlobalConfiguration.Configuration.Services.Replace(typeof(IBodyModelValidator), new CustomBodyModelValidator());
-		GlobalConfiguration.Configure(WebApiConfig.Register);
-		XpoDefault.DataLayer = ConnectionHelper.CreateDataLayer(AutoCreateOption.SchemaAlreadyExists, true);
-	}
+```cs
+protected void Application_Start() {
+	GlobalConfiguration.Configuration.Services.Replace(typeof(IBodyModelValidator), new CustomBodyModelValidator());
+	GlobalConfiguration.Configure(WebApiConfig.Register);
+	XpoDefault.DataLayer = ConnectionHelper.CreateDataLayer(AutoCreateOption.SchemaAlreadyExists, true);
+}
 
-    public class CustomBodyModelValidator : DefaultBodyModelValidator {
-        readonly ConcurrentDictionary<Type, bool> persistentTypes = new ConcurrentDictionary<Type, bool>();
-        public override bool ShouldValidateType(Type type) {
-            return persistentTypes.GetOrAdd(type, t => !typeof(IXPSimpleObject).IsAssignableFrom(t));
-        }
-    }
-	```
+public class CustomBodyModelValidator : DefaultBodyModelValidator {
+	readonly ConcurrentDictionary<Type, bool> persistentTypes = new ConcurrentDictionary<Type, bool>();
+	public override bool ShouldValidateType(Type type) {
+		return persistentTypes.GetOrAdd(type, t => !typeof(IXPSimpleObject).IsAssignableFrom(t));
+	}
+}
+```
 
 6. Modify the *WebApiConfig.cs* file: create an ODataModelBuilder instance and register an EntitySet for each persistent class (refer to the [WebApiConfig.cs](CS/ODataService/App_Start/WebApiConfig.cs) file in this repository to learn how to automatically register all persistent classes):
 
-	```cs
-	public static void Register(HttpConfiguration config) {
-		config.Count().Filter().OrderBy().Expand().Select().MaxTop(null);
-		ODataModelBuilder modelBuilder = CreateODataModelBuilder();
+```cs
+public static void Register(HttpConfiguration config) {
+	config.Count().Filter().OrderBy().Expand().Select().MaxTop(null);
+	ODataModelBuilder modelBuilder = CreateODataModelBuilder();
 
-		ODataBatchHandler batchHandler =
-			new DefaultODataBatchHandler(GlobalConfiguration.DefaultServer);
+	ODataBatchHandler batchHandler =
+		new DefaultODataBatchHandler(GlobalConfiguration.DefaultServer);
 
-		config.MapODataServiceRoute(
-			routeName: "ODataRoute",
-			routePrefix: null,
-			model: modelBuilder.GetEdmModel(),
-			batchHandler: batchHandler);
-	}
+	config.MapODataServiceRoute(
+		routeName: "ODataRoute",
+		routePrefix: null,
+		model: modelBuilder.GetEdmModel(),
+		batchHandler: batchHandler);
+}
 
-	static ODataModelBuilder CreateODataModelBuilder() { 
+static ODataModelBuilder CreateODataModelBuilder() { 
 
-	  // Include persistent classes to the EdmModel:
-		ODataModelBuilder builder = new ODataConventionModelBuilder();
-		var customers = builder.EntitySet<Customer>("Customers");
-		customers.EntityType.HasKey(t => t.CustomerID);
-		// ..
+	// Include persistent classes to the EdmModel:
+	ODataModelBuilder builder = new ODataConventionModelBuilder();
+	var customers = builder.EntitySet<Customer>("Customers");
+	customers.EntityType.HasKey(t => t.CustomerID);
+	// ..
 
-	  // Include custom actions and functions into the EdmModel.
-		builder.Function("TotalSalesByYear")
-			.Returns<decimal>()
-			.Parameter<int>("year");
+	// Include custom actions and functions into the EdmModel.
+	builder.Function("TotalSalesByYear")
+		.Returns<decimal>()
+		.Parameter<int>("year");
 
-		return builder;
-	}
-	```
+	return builder;
+}
+```
 7. Add OData controllers to the Controllers folder. An OData controller is a class inherited from the Microsoft.AspNet.OData.ODataController class. Each controller represents a separate data model class created on the third step.
 8. Implement the required methods in controllers (e.g., `Get`, `Post`, `Put`, `Path`, `Delete`, etc.). For reference, use existing controllers in this example. For example: **CS\ODataService\Controllers\CustomersController.cs**.
