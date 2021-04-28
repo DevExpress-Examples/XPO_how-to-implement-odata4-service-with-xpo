@@ -9,7 +9,7 @@ Steps to implement:
 2. Install the following nuget packages:
 	* DevExpress.Xpo
 	* Microsoft.AspNet.OData
-3. Define your data model - implement persistent classes and initialize the data layer. If you are new to XPO, refer to the following articles to learn how to do this: [Create Persistent Class](https://docs.devexpress.com/CoreLibraries/2256/devexpress-orm-tool/getting-started/tutorial-1-your-first-data-aware-application-with-xpo), [Map to Existing Tables](https://docs.devexpress.com/CoreLibraries/3264/devexpress-orm-tool/concepts/basics-of-creating-persistent-objects-for-existing-data-tables).
+3. Define your data model - implement persistent classes and initialize the data layer. If you are new to XPO, refer to the following articles to learn how to do this: [Create Persistent Class](https://docs.devexpress.com/XPO/2077/create-a-data-model/create-a-persistent-object), [Map to Existing Tables](https://docs.devexpress.com/CoreLibraries/3264/devexpress-orm-tool/concepts/basics-of-creating-persistent-objects-for-existing-data-tables).
 4. Add files from the **CS\OdataService\Helpers** folder in this example to your project ([Quick Tip: Add files to Visual Studio projects the easy way](https://blogs.msdn.microsoft.com/davidklinems/2007/12/18/quick-tip-add-files-to-visual-studio-projects-the-easy-way/)).
 5. Modify the `Application_Start()` method declared in the *Global.asax* file: register the model body validator class and initialize the [Data Access Layer](https://docs.devexpress.com/CoreLibraries/2121/devexpress-orm-tool/feature-center/connecting-to-a-data-store/data-access-layer).
 
