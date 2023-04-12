@@ -106,7 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DevExpress.Xpo">
-      <Version>20.1.16</Version>
+      <Version>20.1.17</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNet.Mvc">
       <Version>5.2.6</Version>
