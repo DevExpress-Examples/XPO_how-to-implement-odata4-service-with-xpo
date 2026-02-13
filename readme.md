@@ -73,7 +73,7 @@ static ODataModelBuilder CreateODataModelBuilder() {
 7. Add OData controllers to the Controllers folder. An OData controller is a class inherited from the Microsoft.AspNet.OData.ODataController class. Each controller represents a separate data model class created on the third step.
 8. Implement the required methods in controllers (e.g., `Get`, `Post`, `Put`, `Patch`, `Delete`, etc.). For reference, use existing controllers in this example. For example: **CS\ODataService\Controllers\CustomersController.cs**.
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=XPO_how-to-implement-odata4-service-with-xpo&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=XPO_how-to-implement-odata4-service-with-xpo&~~~was_helpful=no)
 
