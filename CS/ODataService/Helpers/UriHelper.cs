@@ -37,7 +37,8 @@ namespace ODataService.Helpers {
                 var serviceRootUri = requestUri.Substring(0, requestUri.IndexOf(prefixName, StringComparison.InvariantCultureIgnoreCase) + prefixName.Length);
                 return serviceRootUri;
             } else {
-                return controller.Url.Content("~/");
+                var requestUri = controller.Request.RequestUri;
+                return requestUri.GetLeftPart(UriPartial.Authority) + "/";
             }
         }
     }
